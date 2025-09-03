@@ -1,26 +1,25 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model activity_log {
-  id           BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  id           BigInt    @id @default(autoincrement())
   log_name     String?   @db.VarChar(255)
-  description  String    @db.Text
+  description  String
   subject_type String?   @db.VarChar(255)
-  event        String?   @db.VarChar(255)
-  subject_id   BigInt?   @db.UnsignedBigInt
+  subject_id   BigInt?
   causer_type  String?   @db.VarChar(255)
-  causer_id    BigInt?   @db.UnsignedBigInt
-  properties   Json?
-  batch_uuid   String?   @db.Char(36)
+  causer_id    BigInt?
+  properties   Json?     @db.Json
   created_at   DateTime? @db.Timestamp(0)
   updated_at   DateTime? @db.Timestamp(0)
+  event        String?   @db.VarChar(255)
+  batch_uuid   String?   @db.Uuid
 
   @@index([log_name], map: "activity_log_log_name_index")
   @@index([causer_type, causer_id], map: "causer")
@@ -28,7 +27,7 @@ model activity_log {
 }
 
 model brands {
-  id              BigInt            @id @default(autoincrement()) @db.UnsignedBigInt
+  id              BigInt            @id @default(autoincrement())
   name            String            @unique(map: "brands_name_unique") @db.VarChar(255)
   created_at      DateTime?         @db.Timestamp(0)
   updated_at      DateTime?         @db.Timestamp(0)
@@ -37,7 +36,7 @@ model brands {
 
 model cache {
   key        String @id @db.VarChar(255)
-  value      String @db.MediumText
+  value      String
   expiration Int
 }
 
@@ -48,7 +47,7 @@ model cache_locks {
 }
 
 model categories {
-  id              BigInt            @id @default(autoincrement()) @db.UnsignedBigInt
+  id              BigInt            @id @default(autoincrement())
   name            String            @unique(map: "categories_name_unique") @db.VarChar(255)
   created_at      DateTime?         @db.Timestamp(0)
   updated_at      DateTime?         @db.Timestamp(0)
@@ -56,7 +55,7 @@ model categories {
 }
 
 model divisions {
-  id         BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  id         BigInt    @id @default(autoincrement())
   name       String    @db.VarChar(255)
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
@@ -64,63 +63,57 @@ model divisions {
 }
 
 model floors {
-  id             BigInt         @id @default(autoincrement()) @db.UnsignedBigInt
+  id             BigInt         @id @default(autoincrement())
   number         String         @db.VarChar(255)
-  unit_id        BigInt         @db.UnsignedBigInt
+  unit_id        BigInt
   created_at     DateTime?      @db.Timestamp(0)
   updated_at     DateTime?      @db.Timestamp(0)
   location_units location_units @relation(fields: [unit_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "floors_unit_id_foreign")
   rooms          rooms[]
-
-  @@index([unit_id], map: "floors_unit_id_foreign")
 }
 
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model inventories {
-  id                          BigInt                                  @id @default(autoincrement()) @db.UnsignedBigInt
-  inventory_number            String                                  @unique(map: "inventories_inventory_number_unique") @db.VarChar(255)
-  inventory_item_id           BigInt                                  @db.UnsignedBigInt
-  acquisition_source          inventories_acquisition_source          @default(dbgenerated("-"))
-  procurement_date            DateTime                                @db.Date
-  purchase_price              Decimal                                 @db.Decimal(15, 2)
-  estimated_depreciation      Decimal?                                @db.Decimal(15, 2)
-  status                      inventories_status                      @default(Ada)
-  image_path                  String?                                 @db.VarChar(255)
-  qr_code_path                String?                                 @db.VarChar(255)
-  unit_id                     BigInt                                  @db.UnsignedBigInt
-  room_id                     BigInt                                  @db.UnsignedBigInt
-  expected_replacement        DateTime?                               @db.Date
-  last_checked_at             DateTime?                               @db.Date
-  pj_id                       BigInt?                                 @db.UnsignedBigInt
-  maintenance_frequency_type  inventories_maintenance_frequency_type?
+  id                          BigInt                   @id @default(autoincrement())
+  inventory_number            String                   @unique(map: "inventories_inventory_number_unique") @db.VarChar(255)
+  inventory_item_id           BigInt
+  acquisition_source          String                   @default("-") @db.VarChar(255)
+  procurement_date            DateTime                 @db.Date
+  purchase_price              Decimal                  @db.Decimal(15, 2)
+  estimated_depreciation      Decimal?                 @db.Decimal(15, 2)
+  status                      String                   @default("Ada") @db.VarChar(255)
+  image_path                  String?                  @db.VarChar(255)
+  qr_code_path                String?                  @db.VarChar(255)
+  unit_id                     BigInt
+  room_id                     BigInt
+  expected_replacement        DateTime?                @db.Date
+  last_checked_at             DateTime?                @db.Date
+  pj_id                       BigInt?
+  maintenance_frequency_type  String?                  @db.VarChar(255)
   maintenance_frequency_value Int?
-  last_maintenance_at         DateTime?                               @db.Date
-  next_due_date               DateTime?                               @db.Date
+  last_maintenance_at         DateTime?                @db.Date
+  next_due_date               DateTime?                @db.Date
   next_due_km                 Int?
   last_odometer_reading       Int?
-  created_at                  DateTime?                               @db.Timestamp(0)
-  updated_at                  DateTime?                               @db.Timestamp(0)
-  inventory_items             inventory_items                         @relation(fields: [inventory_item_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "inventories_inventory_item_id_foreign")
-  users                       users?                                  @relation(fields: [pj_id], references: [id], onUpdate: NoAction, map: "inventories_pj_id_foreign")
-  rooms                       rooms                                   @relation(fields: [room_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "inventories_room_id_foreign")
-  location_units              location_units                          @relation(fields: [unit_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "inventories_unit_id_foreign")
+  created_at                  DateTime?                @db.Timestamp(0)
+  updated_at                  DateTime?                @db.Timestamp(0)
+  inventory_items             inventory_items          @relation(fields: [inventory_item_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "inventories_inventory_item_id_foreign")
+  users                       users?                   @relation(fields: [pj_id], references: [id], onUpdate: NoAction, map: "inventories_pj_id_foreign")
+  rooms                       rooms                    @relation(fields: [room_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "inventories_room_id_foreign")
+  location_units              location_units           @relation(fields: [unit_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "inventories_unit_id_foreign")
   inventory_maintenances      inventory_maintenances[]
-
-  @@index([inventory_item_id], map: "inventories_inventory_item_id_foreign")
-  @@index([pj_id], map: "inventories_pj_id_foreign")
-  @@index([room_id], map: "inventories_room_id_foreign")
-  @@index([unit_id], map: "inventories_unit_id_foreign")
 }
 
 model inventory_items {
-  id               BigInt        @id @default(autoincrement()) @db.UnsignedBigInt
+  id               BigInt        @id @default(autoincrement())
   item_code        String        @unique(map: "inventory_items_item_code_unique") @db.VarChar(255)
   name             String        @db.VarChar(255)
   quantity         Int
-  brand_id         BigInt        @db.UnsignedBigInt
-  category_id      BigInt        @db.UnsignedBigInt
-  type_id          BigInt        @db.UnsignedBigInt
+  brand_id         BigInt
+  category_id      BigInt
+  type_id          BigInt
   manufacturer     String        @db.VarChar(255)
-  manufacture_year Int           @db.Year
+  manufacture_year Int
   isbn             String?       @db.VarChar(255)
   image_path       String?       @db.VarChar(255)
   created_at       DateTime?     @db.Timestamp(0)
@@ -129,41 +122,34 @@ model inventory_items {
   brands           brands        @relation(fields: [brand_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "inventory_items_brand_id_foreign")
   categories       categories    @relation(fields: [category_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "inventory_items_category_id_foreign")
   item_types       item_types    @relation(fields: [type_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "inventory_items_type_id_foreign")
-
-  @@index([brand_id], map: "inventory_items_brand_id_foreign")
-  @@index([category_id], map: "inventory_items_category_id_foreign")
-  @@index([type_id], map: "inventory_items_type_id_foreign")
 }
 
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model inventory_maintenances {
-  id                                             BigInt                        @id @default(autoincrement()) @db.UnsignedBigInt
-  inventory_id                                   BigInt                        @db.UnsignedBigInt
-  inspection_date                                DateTime                      @db.Date
-  issue_found                                    String?                       @db.Text
-  solution_taken                                 String?                       @db.Text
-  notes                                          String?                       @db.Text
-  status                                         inventory_maintenances_status @default(reported)
-  cost                                           Decimal?                      @db.Decimal(15, 0)
-  photo_1                                        String?                       @db.VarChar(255)
-  photo_2                                        String?                       @db.VarChar(255)
-  photo_3                                        String?                       @db.VarChar(255)
-  user_id                                        BigInt?                       @db.UnsignedBigInt
+  id                                             BigInt      @id @default(autoincrement())
+  inventory_id                                   BigInt
+  inspection_date                                DateTime    @db.Date
+  issue_found                                    String?
+  solution_taken                                 String?
+  notes                                          String?
+  status                                         String      @default("reported") @db.VarChar(255)
+  cost                                           Decimal?    @db.Decimal(15, 0)
+  photo_1                                        String?     @db.VarChar(255)
+  photo_2                                        String?     @db.VarChar(255)
+  photo_3                                        String?     @db.VarChar(255)
+  user_id                                        BigInt?
   odometer_reading                               Int?
-  creator_id                                     BigInt?                       @db.UnsignedBigInt
-  created_at                                     DateTime?                     @db.Timestamp(0)
-  updated_at                                     DateTime?                     @db.Timestamp(0)
-  deleted_at                                     DateTime?                     @db.Timestamp(0)
-  users_inventory_maintenances_creator_idTousers users?                        @relation("inventory_maintenances_creator_idTousers", fields: [creator_id], references: [id], onUpdate: NoAction, map: "inventory_maintenances_creator_id_foreign")
-  inventories                                    inventories                   @relation(fields: [inventory_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "inventory_maintenances_inventory_id_foreign")
-  users_inventory_maintenances_user_idTousers    users?                        @relation("inventory_maintenances_user_idTousers", fields: [user_id], references: [id], onUpdate: NoAction, map: "inventory_maintenances_user_id_foreign")
-
-  @@index([creator_id], map: "inventory_maintenances_creator_id_foreign")
-  @@index([inventory_id], map: "inventory_maintenances_inventory_id_foreign")
-  @@index([user_id], map: "inventory_maintenances_user_id_foreign")
+  creator_id                                     BigInt?
+  created_at                                     DateTime?   @db.Timestamp(0)
+  updated_at                                     DateTime?   @db.Timestamp(0)
+  deleted_at                                     DateTime?   @db.Timestamp(0)
+  users_inventory_maintenances_creator_idTousers users?      @relation("inventory_maintenances_creator_idTousers", fields: [creator_id], references: [id], onUpdate: NoAction, map: "inventory_maintenances_creator_id_foreign")
+  inventories                                    inventories @relation(fields: [inventory_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "inventory_maintenances_inventory_id_foreign")
+  users_inventory_maintenances_user_idTousers    users?      @relation("inventory_maintenances_user_idTousers", fields: [user_id], references: [id], onUpdate: NoAction, map: "inventory_maintenances_user_id_foreign")
 }
 
 model item_types {
-  id              BigInt            @id @default(autoincrement()) @db.UnsignedBigInt
+  id              BigInt            @id @default(autoincrement())
   name            String            @unique(map: "item_types_name_unique") @db.VarChar(255)
   created_at      DateTime?         @db.Timestamp(0)
   updated_at      DateTime?         @db.Timestamp(0)
@@ -171,7 +157,7 @@ model item_types {
 }
 
 model location_units {
-  id          BigInt        @id @default(autoincrement()) @db.UnsignedBigInt
+  id          BigInt        @id @default(autoincrement())
   name        String        @unique(map: "location_units_name_unique") @db.VarChar(255)
   created_at  DateTime?     @db.Timestamp(0)
   updated_at  DateTime?     @db.Timestamp(0)
@@ -180,13 +166,13 @@ model location_units {
 }
 
 model media {
-  id            BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  id            BigInt    @id @default(autoincrement())
   medially_type String    @db.VarChar(255)
-  medially_id   BigInt    @db.UnsignedBigInt
-  file_url      String    @db.Text
+  medially_id   BigInt
+  file_url      String
   file_name     String    @db.VarChar(255)
   file_type     String?   @db.VarChar(255)
-  size          BigInt    @db.UnsignedBigInt
+  size          BigInt
   created_at    DateTime? @db.Timestamp(0)
   updated_at    DateTime? @db.Timestamp(0)
 
@@ -194,18 +180,18 @@ model media {
 }
 
 model migrations {
-  id        Int    @id @default(autoincrement()) @db.UnsignedInt
+  id        Int    @id @default(autoincrement())
   migration String @db.VarChar(255)
   batch     Int
 }
 
 model personal_access_tokens {
-  id             BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  id             BigInt    @id @default(autoincrement())
   tokenable_type String    @db.VarChar(255)
-  tokenable_id   BigInt    @db.UnsignedBigInt
-  name           String    @db.Text
+  tokenable_id   BigInt
+  name           String
   token          String    @unique(map: "personal_access_tokens_token_unique") @db.VarChar(64)
-  abilities      String?   @db.Text
+  abilities      String?
   last_used_at   DateTime? @db.Timestamp(0)
   expires_at     DateTime? @db.Timestamp(0)
   created_at     DateTime? @db.Timestamp(0)
@@ -215,39 +201,37 @@ model personal_access_tokens {
 }
 
 model rooms {
-  id           BigInt        @id @default(autoincrement()) @db.UnsignedBigInt
+  id           BigInt        @id @default(autoincrement())
   name         String        @db.VarChar(255)
-  floor_id     BigInt        @db.UnsignedBigInt
-  pj_lokasi_id BigInt?       @db.UnsignedBigInt
+  floor_id     BigInt
+  pj_lokasi_id BigInt?
   created_at   DateTime?     @db.Timestamp(0)
   updated_at   DateTime?     @db.Timestamp(0)
   inventories  inventories[]
   floors       floors        @relation(fields: [floor_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "rooms_floor_id_foreign")
   users        users?        @relation(fields: [pj_lokasi_id], references: [id], onUpdate: NoAction, map: "rooms_pj_lokasi_id_foreign")
-
-  @@index([floor_id], map: "rooms_floor_id_foreign")
-  @@index([pj_lokasi_id], map: "rooms_pj_lokasi_id_foreign")
 }
 
 model sessions {
   id            String  @id @db.VarChar(255)
-  user_id       BigInt? @db.UnsignedBigInt
+  user_id       BigInt?
   ip_address    String? @db.VarChar(45)
-  user_agent    String? @db.Text
-  payload       String  @db.LongText
+  user_agent    String?
+  payload       String
   last_activity Int
 
   @@index([last_activity], map: "sessions_last_activity_index")
   @@index([user_id], map: "sessions_user_id_index")
 }
 
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model users {
-  id                                                              BigInt                   @id @default(autoincrement()) @db.UnsignedBigInt
+  id                                                              BigInt                   @id @default(autoincrement())
   name                                                            String                   @db.VarChar(255)
   email                                                           String                   @unique(map: "users_email_unique") @db.VarChar(255)
   password                                                        String                   @db.VarChar(255)
-  division_id                                                     BigInt?                  @db.UnsignedBigInt
-  role                                                            users_role
+  division_id                                                     BigInt?
+  role                                                            String                   @db.VarChar(255)
   is_room_supervisor                                              Boolean                  @default(false)
   is_pj_maintenance                                               Boolean                  @default(false)
   remember_token                                                  String?                  @db.VarChar(100)
@@ -258,43 +242,4 @@ model users {
   inventory_maintenances_inventory_maintenances_user_idTousers    inventory_maintenances[] @relation("inventory_maintenances_user_idTousers")
   rooms                                                           rooms[]
   divisions                                                       divisions?               @relation(fields: [division_id], references: [id], onUpdate: NoAction, map: "users_division_id_foreign")
-
-  @@index([division_id], map: "users_division_id_foreign")
-}
-
-enum inventories_acquisition_source {
-  Beli
-  Hibah
-  Bantuan
-  // - @map("-")
-}
-
-enum users_role {
-  admin
-  head
-  karyawan
-}
-
-enum inventory_maintenances_status {
-  reported
-  on_progress
-  handled
-  done
-  cancelled
-}
-
-enum inventories_status {
-  Ada
-  Rusak
-  Perbaikan
-  Hilang
-  Dipinjam
-  // - @map("-")
-}
-
-enum inventories_maintenance_frequency_type {
-  bulan
-  km
-  minggu
-  semester
 }

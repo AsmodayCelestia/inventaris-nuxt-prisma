@@ -1,0 +1,10 @@
+[
+  { "id": 1, "name": "Heru", "email": "heru@darwis.com", "password": "admin123", "division_id": 1, "role": "admin" },
+  { "id": 2, "name": "Salim", "email": "salim@darwis.com", "password": "petugas123", "division_id": 2, "role": "head" },
+  { "id": 3, "name": "Petugas Lapangan", "email": "petugas@darwis.com", "password": "petugas123", "division_id": 2, "role": "karyawan" },
+  { "id": 4, "name": "petugas2", "email": "petugas2@darwis.com", "password": "petugas123", "division_id": 2, "role": "karyawan" },
+  { "id": 5, "name": "mila", "email": "mila@darwis.com", "password": "petugas123", "division_id": 4, "role": "karyawan" },
+  { "id": 6, "name": "amel", "email": "amel@darwis.com", "password": "petugas123", "division_id": 4, "role": "karyawan" },
+  { "id": 7, "name": "ayuni", "email": "ayuni@darwis.com", "password": "petugas123", "division_id": 3, "role": "karyawan" },
+  { "id": 8, "name": "yuli", "email": "yuli@darwis.com", "password": "petugas123", "division_id": 4, "role": "karyawan" }
+]

@@ -76,9 +76,6 @@
       "#shared/*": [
         "../shared/*"
       ],
-      "#prisma": [
-        "./app/generated/prisma/index.js"
-      ],
       "#app": [
         "../node_modules/nuxt/dist/app"
       ],
@@ -98,7 +95,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/dev.json"
+        "./manifest/meta/dev"
       ],
       "#build": [
         "."

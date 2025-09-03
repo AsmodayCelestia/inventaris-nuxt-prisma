@@ -1,7 +1,7 @@
 {
-  "_hash": "sfCSYRlM6CiBe8mruDwbQfghDOnoq0eqpXnDcAoDkQ0",
+  "_hash": "k2lEmwmd-pHi4t2bZmOyN1QxeRXOaMAg2c22Y1ZcIbE",
   "project": {
-    "rootDir": "/Users/macbookpro/Documents/inventarisNextjs/inventarisNextjs/apps/web"
+    "rootDir": "/Users/macbookpro/Documents/inventarisNextjs/web"
   },
   "versions": {
     "nuxt": "4.0.3"

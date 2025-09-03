@@ -1,8 +1,8 @@
-import { defineNuxtConfig } from 'nuxt/config'
-
+// nuxt.config.ts
 export default defineNuxtConfig({
-  alias: {
-    '#prisma': './app/generated/prisma/index.js'
-  },
-  compatibilityDate: '2025-09-02'
+  compatibilityDate: '2025-09-02',
+  devtools: { enabled: false },
+
+  modules: ['@nuxtjs/tailwindcss'],
+  css: ['~/assets/css/tailwind.css']
 })

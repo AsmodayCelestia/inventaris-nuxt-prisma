@@ -1,1 +1,1 @@
-export { default } from "file:///Users/macbookpro/Documents/inventarisNextjs/inventarisNextjs/apps/web/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
+export { default } from "file:///Users/macbookpro/Documents/inventarisNextjs/web/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
