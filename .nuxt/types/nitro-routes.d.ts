@@ -13,14 +13,14 @@ declare module "nitropack/types" {
     '/api/categories': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/categories/index.get').default>>>>
     }
-    '/api/seed': {
-      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/seed.post').default>>>>
-    }
-    '/api/test': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/test.get').default>>>>
+    '/api/users/me': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/users/me.get').default>>>>
     }
     '/__nuxt_error': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/handlers/renderer').default>>>>
+    }
+    '/api/_nuxt_icon/:collection': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/@nuxt/icon/dist/runtime/server/api').default>>>>
     }
     '/__nuxt_island/**': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/#internal/nuxt/island-renderer').default>>>>

@@ -110,6 +110,7 @@ declare global {
   const setResponseHeaders: typeof import('../../node_modules/h3')['setResponseHeaders']
   const setResponseStatus: typeof import('../../node_modules/h3')['setResponseStatus']
   const splitCookiesString: typeof import('../../node_modules/h3')['splitCookiesString']
+  const sterilBigInt: typeof import('../../server/utils/serialize')['sterilBigInt']
   const toEventHandler: typeof import('../../node_modules/h3')['toEventHandler']
   const toNodeListener: typeof import('../../node_modules/h3')['toNodeListener']
   const toPlainHandler: typeof import('../../node_modules/h3')['toPlainHandler']
@@ -141,3 +142,4 @@ export { appendCorsHeaders, appendCorsPreflightHeaders, appendHeader, appendHead
 export { buildAssetsURL as __buildAssetsURL, publicAssetsURL as __publicAssetsURL } from '/Users/macbookpro/Documents/inventarisNextjs/web/node_modules/nuxt/dist/core/runtime/nitro/utils/paths';
 export { defineAppConfig } from '/Users/macbookpro/Documents/inventarisNextjs/web/node_modules/nuxt/dist/core/runtime/nitro/utils/config';
 export { prisma } from '/Users/macbookpro/Documents/inventarisNextjs/web/server/utils/prisma';
+export { sterilBigInt } from '/Users/macbookpro/Documents/inventarisNextjs/web/server/utils/serialize';

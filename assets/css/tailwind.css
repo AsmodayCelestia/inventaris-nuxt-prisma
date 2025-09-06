@@ -1,0 +1,10 @@
+/* kalau kamu bikin sendiri, import tailwind dulu */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .form-input {
+    @apply border-white/20 !important;
+  }
+}
