@@ -1,19 +1,20 @@
 <script setup>
 const { initializeAuth, isLoggedIn } = useAuth()
+const token = useCookie('auth-token')
 
-// 1. client saja
-onMounted(async () => {
+onNuxtReady(async () => {
+  if (!token.value) {
+    // === first-time visitor : instan ===
+    return navigateTo('/login', { replace: true })
+  }
+
+  // === returning user : validasi dulu ===
   await initializeAuth()
   if (isLoggedIn.value) {
-    await navigateTo('/dashboard', { replace: true })
+    return navigateTo('/dashboard', { replace: true })
   } else {
-    await navigateTo('/login', { replace: true })
+    // cookie ternyata invalid
+    return navigateTo('/login', { replace: true })
   }
 })
 </script>
-
-<template>
-  <div class="min-h-screen grid place-items-center text-sm text-slate-600">
-    Redirecting…
-  </div>
-</template>
