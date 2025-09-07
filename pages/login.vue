@@ -10,8 +10,9 @@
     </div>
   </Transition>
 
+  <!-- FULL SCREEN LOGIN -->
   <main
-    class="min-h-screen grid place-items-center relative overflow-hidden
+    class="relative min-h-screen w-screen grid place-items-center overflow-hidden
            bg-cover bg-center bg-no-repeat"
     style="background-image: url(/login-bg.webp)"
   >
@@ -44,13 +45,14 @@
         <UButton type="submit" block size="lg" :disabled="isLoading" class="justify-center rounded-lg bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-400/50 disabled:cursor-not-allowed transition">
           <template #default>
             <span v-if="!isLoading">Sign in</span>
-            <span v-else>Signing in…</span>   <!-- cuma teks, animasi pindah overlay -->
+            <span v-else>Signing in…</span>
           </template>
         </UButton>
       </form>
     </section>
   </main>
 </template>
+
 
 <script setup>
 definePageMeta({ layout: false })
