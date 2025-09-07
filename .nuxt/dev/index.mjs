@@ -1341,7 +1341,22 @@ const plugins = [
 _oZx6gSVO9DiUvbRLQz5VzL3qUNLtZzKR8cIwhCcYH7w
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"1af45-gozxyzWJ5jzOWVgTVZk+qYEUzjE\"",
+    "mtime": "2025-09-07T01:38:57.021Z",
+    "size": 110405,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"57029-0rCUyHitmJt9kdBj3gNJ+DqDA+k\"",
+    "mtime": "2025-09-07T01:38:57.021Z",
+    "size": 356393,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -1441,6 +1456,47 @@ const _xMsllG = defineEventHandler(async (event) => {
     event.context.auth = payload;
   } catch {
     throw createError({ statusCode: 401, statusMessage: "Invalid token" });
+  }
+});
+
+const protectedMap = [
+  // ---------- ADMIN ONLY ----------
+  { prefix: "/api/register", roles: ["admin"] },
+  { prefix: "/api/activity-log", roles: ["admin"] },
+  { prefix: "/api/reports", roles: ["admin"] },
+  // semua /api/reports/...
+  { prefix: "/api/qrcodes/bulk", roles: ["admin"] },
+  { prefix: "/api/units", roles: ["admin"] },
+  // POST/PUT/DELETE unit
+  { prefix: "/api/divisions", roles: ["admin"] },
+  // full CUD divisions
+  // ---------- ADMIN & HEAD ----------
+  { prefix: "/api/users", roles: ["admin", "head"] },
+  // full CRUD user
+  // master data (kecuali GET) – jika Anda ingin lebih presisi, pisahkan per-method;
+  // untuk sekarang kita asumsikan seluruh resource di bawah ini butuh admin/head
+  { prefix: "/api/brands", roles: ["admin", "head"] },
+  { prefix: "/api/categories", roles: ["admin", "head"] },
+  { prefix: "/api/item-types", roles: ["admin", "head"] },
+  { prefix: "/api/floors", roles: ["admin", "head"] },
+  { prefix: "/api/rooms", roles: ["admin", "head"] },
+  { prefix: "/api/inventory-items", roles: ["admin", "head"] },
+  { prefix: "/api/inventories", roles: ["admin", "head"] },
+  // full CUD inventaris
+  { prefix: "/api/maintenance", roles: ["admin", "head"] }
+  // full CUD maintenance
+];
+const __qIkP5 = defineEventHandler(async (event) => {
+  if (event.method === "OPTIONS") return;
+  const rule = protectedMap.find((r) => event.path.startsWith(r.prefix));
+  if (!rule) return;
+  const { auth } = event.context;
+  if (!auth) throw createError({ statusCode: 401, statusMessage: "Unauthenticated" });
+  if (!rule.roles.includes(auth.role)) {
+    throw createError({
+      statusCode: 403,
+      statusMessage: `Forbidden. Required role: ${rule.roles.join(" | ")}`
+    });
   }
 });
 
@@ -1911,19 +1967,80 @@ async function getIslandContext(event) {
 }
 
 const _lazy_uuh_8M = () => Promise.resolve().then(function () { return login_post$1; });
-const _lazy_FrdMRG = () => Promise.resolve().then(function () { return index_get$1; });
-const _lazy_Rlxkdg = () => Promise.resolve().then(function () { return index_post; });
-const _lazy_Iri47J = () => Promise.resolve().then(function () { return index_get; });
+const _lazy_gt6fkU = () => Promise.resolve().then(function () { return _id__delete$f; });
+const _lazy_Ks663Y = () => Promise.resolve().then(function () { return _id__put$e; });
+const _lazy_FrdMRG = () => Promise.resolve().then(function () { return index_get$f; });
+const _lazy_Rlxkdg = () => Promise.resolve().then(function () { return index_post$f; });
+const _lazy_9WM8cv = () => Promise.resolve().then(function () { return _id__delete$d; });
+const _lazy_RjFOY1 = () => Promise.resolve().then(function () { return _id__put$c; });
+const _lazy_Iri47J = () => Promise.resolve().then(function () { return index_get$d; });
+const _lazy_saaYb3 = () => Promise.resolve().then(function () { return index_post$d; });
+const _lazy_R6Pgp7 = () => Promise.resolve().then(function () { return _id__delete$b; });
+const _lazy_MaCPFL = () => Promise.resolve().then(function () { return _id__get$1; });
+const _lazy_6W_CAv = () => Promise.resolve().then(function () { return _id__put$a; });
+const _lazy_6cS6OX = () => Promise.resolve().then(function () { return index_get$b; });
+const _lazy_2swmvh = () => Promise.resolve().then(function () { return index_post$b; });
+const _lazy_6alHPA = () => Promise.resolve().then(function () { return _id__delete$9; });
+const _lazy_C0MHM_ = () => Promise.resolve().then(function () { return _id__put$9; });
+const _lazy_ZVW16s = () => Promise.resolve().then(function () { return index_get$9; });
+const _lazy_mgNiGc = () => Promise.resolve().then(function () { return index_post$9; });
+const _lazy_uShz_8 = () => Promise.resolve().then(function () { return _id__delete$7; });
+const _lazy_71m2f1 = () => Promise.resolve().then(function () { return _id__put$7; });
+const _lazy_UsplfQ = () => Promise.resolve().then(function () { return index_get$7; });
+const _lazy_te6Wdj = () => Promise.resolve().then(function () { return index_post$7; });
+const _lazy_xvjVGG = () => Promise.resolve().then(function () { return _id__delete$5; });
+const _lazy_FNTeZd = () => Promise.resolve().then(function () { return _id__put$5; });
+const _lazy_oXsmaM = () => Promise.resolve().then(function () { return index_get$5; });
+const _lazy_4nnzf7 = () => Promise.resolve().then(function () { return index_post$5; });
+const _lazy_x0figw = () => Promise.resolve().then(function () { return _id__delete$3; });
+const _lazy_7sFOJV = () => Promise.resolve().then(function () { return _id__put$3; });
+const _lazy_PvYNww = () => Promise.resolve().then(function () { return index_get$3; });
+const _lazy_Gf2QWT = () => Promise.resolve().then(function () { return index_post$3; });
+const _lazy_6gZwyt = () => Promise.resolve().then(function () { return _id__delete$1; });
+const _lazy_32JZhk = () => Promise.resolve().then(function () { return _id__put$1; });
+const _lazy_BtQ91X = () => Promise.resolve().then(function () { return index_get$1; });
+const _lazy_brgtwi = () => Promise.resolve().then(function () { return index_post$1; });
 const _lazy_bMuNtP = () => Promise.resolve().then(function () { return me_get$1; });
 const _lazy_yNAZdU = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
   { route: '', handler: _OFWfgL, lazy: false, middleware: true, method: undefined },
   { route: '', handler: _xMsllG, lazy: false, middleware: true, method: undefined },
+  { route: '', handler: __qIkP5, lazy: false, middleware: true, method: undefined },
   { route: '/api/auth/login', handler: _lazy_uuh_8M, lazy: true, middleware: false, method: "post" },
+  { route: '/api/brands/:id', handler: _lazy_gt6fkU, lazy: true, middleware: false, method: "delete" },
+  { route: '/api/brands/:id', handler: _lazy_Ks663Y, lazy: true, middleware: false, method: "put" },
   { route: '/api/brands', handler: _lazy_FrdMRG, lazy: true, middleware: false, method: "get" },
   { route: '/api/brands', handler: _lazy_Rlxkdg, lazy: true, middleware: false, method: "post" },
+  { route: '/api/categories/:id', handler: _lazy_9WM8cv, lazy: true, middleware: false, method: "delete" },
+  { route: '/api/categories/:id', handler: _lazy_RjFOY1, lazy: true, middleware: false, method: "put" },
   { route: '/api/categories', handler: _lazy_Iri47J, lazy: true, middleware: false, method: "get" },
+  { route: '/api/categories', handler: _lazy_saaYb3, lazy: true, middleware: false, method: "post" },
+  { route: '/api/divisions/:id', handler: _lazy_R6Pgp7, lazy: true, middleware: false, method: "delete" },
+  { route: '/api/divisions/:id', handler: _lazy_MaCPFL, lazy: true, middleware: false, method: "get" },
+  { route: '/api/divisions/:id', handler: _lazy_6W_CAv, lazy: true, middleware: false, method: "put" },
+  { route: '/api/divisions', handler: _lazy_6cS6OX, lazy: true, middleware: false, method: "get" },
+  { route: '/api/divisions', handler: _lazy_2swmvh, lazy: true, middleware: false, method: "post" },
+  { route: '/api/floors/:id', handler: _lazy_6alHPA, lazy: true, middleware: false, method: "delete" },
+  { route: '/api/floors/:id', handler: _lazy_C0MHM_, lazy: true, middleware: false, method: "put" },
+  { route: '/api/floors', handler: _lazy_ZVW16s, lazy: true, middleware: false, method: "get" },
+  { route: '/api/floors', handler: _lazy_mgNiGc, lazy: true, middleware: false, method: "post" },
+  { route: '/api/item-types/:id', handler: _lazy_uShz_8, lazy: true, middleware: false, method: "delete" },
+  { route: '/api/item-types/:id', handler: _lazy_71m2f1, lazy: true, middleware: false, method: "put" },
+  { route: '/api/item-types', handler: _lazy_UsplfQ, lazy: true, middleware: false, method: "get" },
+  { route: '/api/item-types', handler: _lazy_te6Wdj, lazy: true, middleware: false, method: "post" },
+  { route: '/api/rooms/:id', handler: _lazy_xvjVGG, lazy: true, middleware: false, method: "delete" },
+  { route: '/api/rooms/:id', handler: _lazy_FNTeZd, lazy: true, middleware: false, method: "put" },
+  { route: '/api/rooms', handler: _lazy_oXsmaM, lazy: true, middleware: false, method: "get" },
+  { route: '/api/rooms', handler: _lazy_4nnzf7, lazy: true, middleware: false, method: "post" },
+  { route: '/api/units/:id', handler: _lazy_x0figw, lazy: true, middleware: false, method: "delete" },
+  { route: '/api/units/:id', handler: _lazy_7sFOJV, lazy: true, middleware: false, method: "put" },
+  { route: '/api/units', handler: _lazy_PvYNww, lazy: true, middleware: false, method: "get" },
+  { route: '/api/units', handler: _lazy_Gf2QWT, lazy: true, middleware: false, method: "post" },
+  { route: '/api/users/:id', handler: _lazy_6gZwyt, lazy: true, middleware: false, method: "delete" },
+  { route: '/api/users/:id', handler: _lazy_32JZhk, lazy: true, middleware: false, method: "put" },
+  { route: '/api/users', handler: _lazy_BtQ91X, lazy: true, middleware: false, method: "get" },
+  { route: '/api/users', handler: _lazy_brgtwi, lazy: true, middleware: false, method: "post" },
   { route: '/api/users/me', handler: _lazy_bMuNtP, lazy: true, middleware: false, method: "get" },
   { route: '/__nuxt_error', handler: _lazy_yNAZdU, lazy: true, middleware: false, method: undefined },
   { route: '/api/_nuxt_icon/:collection', handler: _MskcDa, lazy: false, middleware: false, method: undefined },
@@ -2189,14 +2306,11 @@ const login_post = defineEventHandler(async (event) => {
   if (!user || !bcrypt.compareSync(password, user.password)) {
     throw createError({ statusCode: 401, statusMessage: "Invalid credentials" });
   }
-  console.log("sampai sini <<<<<<<");
   const token = jwt.sign(
     { id: String(user.id), role: user.role },
     process.env.JWT_SECRET,
     { expiresIn: "1d" }
   );
-  console.log("sampai sini juga<<<<<<<");
-  console.log("[login] token:", token);
   setCookie(event, "auth-token", token, {
     httpOnly: false,
     secure: false,
@@ -2205,7 +2319,6 @@ const login_post = defineEventHandler(async (event) => {
     maxAge: 60 * 60 * 24,
     path: "/"
   });
-  console.log("[login] setCookie selesai");
   return { user: sterilBigInt(user) };
 });
 
@@ -2214,19 +2327,464 @@ const login_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProper
   default: login_post
 }, Symbol.toStringTag, { value: 'Module' }));
 
+const _id__delete$e = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  await prisma.brands.delete({ where: { id } });
+  return { message: "Merk berhasil dihapus" };
+});
+
+const _id__delete$f = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__delete$e
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__put$d = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  const { name } = await readBody(event);
+  const brand = await prisma.brands.update({ where: { id }, data: { name } });
+  return sterilBigInt(brand);
+});
+
+const _id__put$e = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__put$d
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get$e = defineEventHandler(async () => {
+  const brands = await prisma.brands.findMany({ orderBy: { name: "asc" } });
+  return sterilBigInt(brands);
+});
+
+const index_get$f = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_get$e
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_post$e = defineEventHandler(async (event) => {
+  const { name } = await readBody(event);
+  const brand = await prisma.brands.create({ data: { name } });
+  return sterilBigInt(brand);
+});
+
+const index_post$f = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_post$e
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__delete$c = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  await prisma.categories.delete({ where: { id } });
+  return { message: "Kategori berhasil dihapus" };
+});
+
+const _id__delete$d = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__delete$c
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__put$b = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  const { name } = await readBody(event);
+  const category = await prisma.categories.update({ where: { id }, data: { name } });
+  return sterilBigInt(category);
+});
+
+const _id__put$c = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__put$b
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get$c = defineEventHandler(async () => {
+  const categories = await prisma.categories.findMany({ orderBy: { name: "asc" } });
+  return sterilBigInt(categories);
+});
+
+const index_get$d = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_get$c
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_post$c = defineEventHandler(async (event) => {
+  const { name } = await readBody(event);
+  const category = await prisma.categories.create({ data: { name } });
+  return sterilBigInt(category);
+});
+
+const index_post$d = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_post$c
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__delete$a = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  await prisma.divisions.delete({ where: { id } });
+  return { message: "Divisi berhasil dihapus" };
+});
+
+const _id__delete$b = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__delete$a
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__get = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  const division = await prisma.divisions.findUnique({ where: { id } });
+  if (!division) throw createError({ statusCode: 404, statusMessage: "Divisi tidak ditemukan" });
+  return sterilBigInt(division);
+});
+
+const _id__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__get
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__put$a = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get$a = defineEventHandler(async () => {
+  const divisions = await prisma.divisions.findMany({ orderBy: { name: "asc" } });
+  return sterilBigInt(divisions);
+});
+
+const index_get$b = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_get$a
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_post$a = defineEventHandler(async (event) => {
+  const { name } = await readBody(event);
+  const division = await prisma.divisions.create({ data: { name } });
+  return sterilBigInt(division);
+});
+
+const index_post$b = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_post$a
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__delete$8 = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  await prisma.floors.delete({ where: { id } });
+  return { message: "Lantai berhasil dihapus" };
+});
+
+const _id__delete$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__delete$8
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__put$8 = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  const { number, unit_id } = await readBody(event);
+  const floor = await prisma.floors.update({
+    where: { id },
+    data: { number, unit_id: BigInt(unit_id) }
+  });
+  return sterilBigInt(floor);
+});
+
+const _id__put$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__put$8
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get$8 = defineEventHandler(async () => {
+  const floors = await prisma.floors.findMany({
+    include: { location_units: { select: { id: true, name: true } } },
+    orderBy: { number: "asc" }
+  });
+  return sterilBigInt(floors);
+});
+
+const index_get$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_get$8
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_post$8 = defineEventHandler(async (event) => {
+  const { number, unit_id } = await readBody(event);
+  const floor = await prisma.floors.create({ data: { number, unit_id: BigInt(unit_id) } });
+  return sterilBigInt(floor);
+});
+
+const index_post$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_post$8
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__delete$6 = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  await prisma.item_types.delete({ where: { id } });
+  return { message: "Jenis barang berhasil dihapus" };
+});
+
+const _id__delete$7 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__delete$6
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__put$6 = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  const { name } = await readBody(event);
+  const exists = await prisma.item_types.findFirst({
+    where: { name, NOT: { id } }
+  });
+  if (exists) throw createError({ statusCode: 409, statusMessage: "Nama jenis sudah ada" });
+  const updated = await prisma.item_types.update({ where: { id }, data: { name } });
+  return sterilBigInt(updated);
+});
+
+const _id__put$7 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__put$6
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get$6 = defineEventHandler(async () => {
+  const types = await prisma.item_types.findMany({ orderBy: { name: "asc" } });
+  return sterilBigInt(types);
+});
+
+const index_get$7 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_get$6
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_post$6 = defineEventHandler(async (event) => {
+  const { name } = await readBody(event);
+  const exists = await prisma.item_types.findFirst({ where: { name } });
+  if (exists) throw createError({ statusCode: 409, statusMessage: "Nama jenis sudah ada" });
+  const created = await prisma.item_types.create({ data: { name } });
+  return sterilBigInt(created);
+});
+
+const index_post$7 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_post$6
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__delete$4 = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  await prisma.rooms.delete({ where: { id } });
+  return { message: "Ruangan berhasil dihapus" };
+});
+
+const _id__delete$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__delete$4
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__put$4 = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  const { name, floor_id, pj_lokasi_id } = await readBody(event);
+  const duplicate = await prisma.rooms.findFirst({
+    where: { floor_id: BigInt(floor_id), name, NOT: { id } }
+  });
+  if (duplicate) throw createError({ statusCode: 409, statusMessage: "Nama ruangan sudah ada di lantai ini" });
+  const room = await prisma.rooms.update({
+    where: { id },
+    data: {
+      name,
+      floor_id: BigInt(floor_id),
+      pj_lokasi_id: pj_lokasi_id ? BigInt(pj_lokasi_id) : null
+    }
+  });
+  return sterilBigInt(room);
+});
+
+const _id__put$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__put$4
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get$4 = defineEventHandler(async () => {
+  const rooms = await prisma.rooms.findMany({
+    include: {
+      floors: {
+        include: {
+          location_units: { select: { id: true, name: true } }
+        }
+      },
+      users: { select: { id: true, name: true } }
+      // ← bukan pj_lokasi
+    },
+    orderBy: { name: "asc" }
+  });
+  return sterilBigInt(
+    rooms.map(({ floors, users, ...rest }) => ({
+      ...rest,
+      floor: {
+        id: floors.id,
+        number: floors.number,
+        unit: floors.location_units
+      },
+      locationPersonInCharge: users
+    }))
+  );
+});
+
+const index_get$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_get$4
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_post$4 = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  const { name, floor_id, pj_lokasi_id } = await readBody(event);
+  const duplicate = await prisma.rooms.findFirst({
+    where: { floor_id: BigInt(floor_id), name, NOT: { id } }
+  });
+  if (duplicate) throw createError({ statusCode: 409, statusMessage: "Nama ruangan sudah ada di lantai ini" });
+  const room = await prisma.rooms.update({
+    where: { id },
+    data: {
+      name,
+      floor_id: BigInt(floor_id),
+      pj_lokasi_id: pj_lokasi_id ? BigInt(pj_lokasi_id) : null
+    }
+  });
+  return sterilBigInt(room);
+});
+
+const index_post$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_post$4
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__delete$2 = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  await prisma.location_units.delete({ where: { id } });
+  return { message: "Unit berhasil dihapus" };
+});
+
+const _id__delete$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__delete$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__put$2 = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  const { name } = await readBody(event);
+  const exists = await prisma.location_units.findFirst({
+    where: { name, NOT: { id } }
+  });
+  if (exists) throw createError({ statusCode: 409, statusMessage: "Nama unit sudah ada" });
+  const updated = await prisma.location_units.update({ where: { id }, data: { name } });
+  return sterilBigInt(updated);
+});
+
+const _id__put$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__put$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get$2 = defineEventHandler(async () => {
+  const units = await prisma.location_units.findMany({ orderBy: { name: "asc" } });
+  return sterilBigInt(units);
+});
+
+const index_get$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_get$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_post$2 = defineEventHandler(async (event) => {
+  const { name } = await readBody(event);
+  const exists = await prisma.location_units.findFirst({ where: { name } });
+  if (exists) throw createError({ statusCode: 409, statusMessage: "Nama unit sudah ada" });
+  const created = await prisma.location_units.create({ data: { name } });
+  return sterilBigInt(created);
+});
+
+const index_post$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_post$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__delete = defineEventHandler(async (event) => {
+  const id = getRouterParam(event, "id");
+  await prisma.users.delete({ where: { id: BigInt(id) } });
+  return { message: "User berhasil dihapus" };
+});
+
+const _id__delete$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__delete
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__put = defineEventHandler(async (event) => {
+  const id = getRouterParam(event, "id");
+  let body = await readBody(event);
+  if (body.password) {
+    body.password = await bcrypt.hash(body.password, 10);
+  } else {
+    delete body.password;
+  }
+  delete body.password_confirmation;
+  if (body.division_id) body.division_id = BigInt(body.division_id);
+  const updated = await prisma.users.update({
+    where: { id: BigInt(id) },
+    // <-- BigInt
+    data: body
+  });
+  return sterilBigInt(updated);
+});
+
+const _id__put$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__put
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get = defineEventHandler(async () => {
+  const users = await prisma.users.findMany({
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      division_id: true,
+      divisions: {
+        // <-- nama relasi yang benar
+        select: { name: true }
+      },
+      is_room_supervisor: true,
+      is_pj_maintenance: true
+    },
+    orderBy: { name: "asc" }
+  });
+  return sterilBigInt(
+    users.map((u) => {
+      var _a, _b;
+      return {
+        ...u,
+        division: (_b = (_a = u.divisions) == null ? void 0 : _a.name) != null ? _b : null,
+        divisions: void 0
+      };
+    })
+  );
+});
+
 const index_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null
+  __proto__: null,
+  default: index_get
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const index_post = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null
-}, Symbol.toStringTag, { value: 'Module' }));
+const index_post = defineEventHandler(async (event) => {
+  let body = await readBody(event);
+  body.password = await bcrypt.hash(body.password, 10);
+  delete body.password_confirmation;
+  if (body.division_id) body.division_id = BigInt(body.division_id);
+  const created = await prisma.users.create({ data: body });
+  return sterilBigInt(created);
+});
 
-const index_get = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null
+const index_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_post
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const me_get = defineEventHandler(async (event) => {
+  var _a, _b;
   const { auth } = event.context;
   const userId = Number(auth.id);
   if (!Number.isFinite(userId)) throw createError({ statusCode: 401, statusMessage: "Malformed id" });
@@ -2238,29 +2796,26 @@ const me_get = defineEventHandler(async (event) => {
       email: true,
       role: true,
       division_id: true,
-      division: {
+      divisions: {
         select: {
-          name: true,
-          isPjMaintenance: true
+          name: true
+          // hanya nama
         }
       },
-      isRoomSupervisor: true,
-      assignedRooms: {
-        select: {
-          room_id: true
-        }
-      }
+      is_room_supervisor: true,
+      is_pj_maintenance: true
+      // <-- ini yang benar
     }
   });
   if (!user) throw createError({ statusCode: 401, statusMessage: "User not found" });
-  const flat = {
+  return sterilBigInt({
     ...user,
-    division: user.division.name,
-    isPjMaintenance: user.division.isPjMaintenance,
-    assignedRooms: user.assignedRooms.map((r) => Number(r.room_id))
-  };
-  delete flat.division_id;
-  return sterilBigInt(flat);
+    division: (_b = (_a = user.divisions) == null ? void 0 : _a.name) != null ? _b : null,
+    isPjMaintenance: user.is_pj_maintenance,
+    isRoomSupervisor: user.is_room_supervisor,
+    assignedRooms: []
+    // belum ada relasi user_rooms
+  });
 });
 
 const me_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({

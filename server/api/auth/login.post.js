@@ -13,15 +13,12 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 401, statusMessage: 'Invalid credentials' })
   }
 
- console.log("sampai sini <<<<<<<")
   const token = jwt.sign(
     { id: String(user.id), role: user.role },
     process.env.JWT_SECRET,
     { expiresIn: '1d' }
   )
-   console.log("sampai sini juga<<<<<<<")
 
-  console.log('[login] token:', token) // <-- debug
   setCookie(event, 'auth-token', token, {
     httpOnly: false,
     secure: process.env.NODE_ENV === 'production', // true hanya di prod
@@ -29,7 +26,6 @@ export default defineEventHandler(async (event) => {
     maxAge: 60 * 60 * 24,
     path: '/'
   })
-  console.log('[login] setCookie selesai') // <-- debug
 
   // return terakhir
   return { user: sterilBigInt(user) }

@@ -16,30 +16,23 @@ export default defineEventHandler(async (event) => {
       email: true,
       role: true,
       division_id: true,
-      division: {
+      divisions: {
         select: {
-          name: true,
-          isPjMaintenance: true
+          name: true // hanya nama
         }
       },
-      isRoomSupervisor: true,
-      assignedRooms: {
-        select: {
-          room_id: true
-        }
-      }
+      is_room_supervisor: true,
+      is_pj_maintenance: true // <-- ini yang benar
     }
   })
   if (!user) throw createError({ statusCode: 401, statusMessage: 'User not found' })
 
-  // flatten & cast assignedRooms jadi array of Number saja
-  const flat = {
+  // flatten
+  return sterilBigInt({
     ...user,
-    division: user.division.name,
-    isPjMaintenance: user.division.isPjMaintenance,
-    assignedRooms: user.assignedRooms.map(r => Number(r.room_id))
-  }
-  delete flat.division_id
-
-  return sterilBigInt(flat)
+    division: user.divisions?.name ?? null,
+    isPjMaintenance: user.is_pj_maintenance,
+    isRoomSupervisor: user.is_room_supervisor,
+    assignedRooms: [] // belum ada relasi user_rooms
+  })
 })

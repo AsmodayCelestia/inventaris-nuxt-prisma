@@ -15,7 +15,15 @@ type LazyComponent<T> = (T & DefineComponent<HydrationStrategies, {}, {}, {}, {}
 
 interface _GlobalComponents {
       'AppLayout': typeof import("../components/AppLayout.vue")['default']
+    'BrandForm': typeof import("../components/BrandForm.vue")['default']
+    'CategoryForm': typeof import("../components/CategoryForm.vue")['default']
     'Collapse': typeof import("../components/Collapse.vue")['default']
+    'DivisionForm': typeof import("../components/DivisionForm.vue")['default']
+    'FloorForm': typeof import("../components/FloorForm.vue")['default']
+    'ItemTypeForm': typeof import("../components/ItemTypeForm.vue")['default']
+    'RoomForm': typeof import("../components/RoomForm.vue")['default']
+    'UnitForm': typeof import("../components/UnitForm.vue")['default']
+    'UserForm': typeof import("../components/UserForm.vue")['default']
     'UAccordion': typeof import("../node_modules/@nuxt/ui/dist/runtime/components/elements/Accordion.vue")['default']
     'UAlert': typeof import("../node_modules/@nuxt/ui/dist/runtime/components/elements/Alert.vue")['default']
     'UAvatar': typeof import("../node_modules/@nuxt/ui/dist/runtime/components/elements/Avatar.vue")['default']
@@ -94,7 +102,15 @@ interface _GlobalComponents {
     'USlideovers': typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
     'NuxtRouteAnnouncer': typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
       'LazyAppLayout': LazyComponent<typeof import("../components/AppLayout.vue")['default']>
+    'LazyBrandForm': LazyComponent<typeof import("../components/BrandForm.vue")['default']>
+    'LazyCategoryForm': LazyComponent<typeof import("../components/CategoryForm.vue")['default']>
     'LazyCollapse': LazyComponent<typeof import("../components/Collapse.vue")['default']>
+    'LazyDivisionForm': LazyComponent<typeof import("../components/DivisionForm.vue")['default']>
+    'LazyFloorForm': LazyComponent<typeof import("../components/FloorForm.vue")['default']>
+    'LazyItemTypeForm': LazyComponent<typeof import("../components/ItemTypeForm.vue")['default']>
+    'LazyRoomForm': LazyComponent<typeof import("../components/RoomForm.vue")['default']>
+    'LazyUnitForm': LazyComponent<typeof import("../components/UnitForm.vue")['default']>
+    'LazyUserForm': LazyComponent<typeof import("../components/UserForm.vue")['default']>
     'LazyUAccordion': LazyComponent<typeof import("../node_modules/@nuxt/ui/dist/runtime/components/elements/Accordion.vue")['default']>
     'LazyUAlert': LazyComponent<typeof import("../node_modules/@nuxt/ui/dist/runtime/components/elements/Alert.vue")['default']>
     'LazyUAvatar': LazyComponent<typeof import("../node_modules/@nuxt/ui/dist/runtime/components/elements/Avatar.vue")['default']>
