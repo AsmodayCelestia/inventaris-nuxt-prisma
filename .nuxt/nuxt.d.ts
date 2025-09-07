@@ -1,6 +1,6 @@
 /// <reference types="@vueuse/nuxt" />
-/// <reference types="@pinia/nuxt" />
 /// <reference types="@nuxt/telemetry" />
+/// <reference types="@pinia/nuxt" />
 /// <reference types="@nuxt/ui" />
 /// <reference path="types/builder-env.d.ts" />
 /// <reference types="nuxt" />

@@ -10,7 +10,6 @@
     </div>
   </Transition>
 
-  <!-- HALAMAN LOGIN (tertutup overlay saat loading) -->
   <main
     class="min-h-screen grid place-items-center relative overflow-hidden
            bg-cover bg-center bg-no-repeat"
