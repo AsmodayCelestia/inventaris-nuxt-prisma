@@ -1,17 +1,19 @@
-<!-- pages/index.vue -->
 <script setup>
-// 1. cek cookie & ambil user di server
 const { initializeAuth, isLoggedIn } = useAuth()
-if (process.server) await initializeAuth()
 
-// 2. redirect sesuai status
-if (isLoggedIn.value) {
-  await navigateTo('/dashboard', { replace: true })
-} else {
-  await navigateTo('/login', { replace: true })
-}
+// 1. client saja
+onMounted(async () => {
+  await initializeAuth()
+  if (isLoggedIn.value) {
+    await navigateTo('/dashboard', { replace: true })
+  } else {
+    await navigateTo('/login', { replace: true })
+  }
+})
 </script>
 
 <template>
-  <p>Redirecting…</p>
+  <div class="min-h-screen grid place-items-center text-sm text-slate-600">
+    Redirecting…
+  </div>
 </template>
