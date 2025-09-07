@@ -1242,7 +1242,7 @@ async function errorHandler(error, event) {
 
 const rootDir = "/Users/macbookpro/Documents/inventarisNextjs/web";
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[],"noscript":[]};
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[{"src":"https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js","defer":true}],"noscript":[]};
 
 const appRootTag = "div";
 
@@ -1341,22 +1341,7 @@ const plugins = [
 _oZx6gSVO9DiUvbRLQz5VzL3qUNLtZzKR8cIwhCcYH7w
 ];
 
-const assets = {
-  "/index.mjs": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"1af45-gozxyzWJ5jzOWVgTVZk+qYEUzjE\"",
-    "mtime": "2025-09-07T01:38:57.021Z",
-    "size": 110405,
-    "path": "index.mjs"
-  },
-  "/index.mjs.map": {
-    "type": "application/json",
-    "etag": "\"57029-0rCUyHitmJt9kdBj3gNJ+DqDA+k\"",
-    "mtime": "2025-09-07T01:38:57.021Z",
-    "size": 356393,
-    "path": "index.mjs.map"
-  }
-};
+const assets = {};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));

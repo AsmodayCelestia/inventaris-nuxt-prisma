@@ -88,23 +88,27 @@ export const useMenu = () => {
     }
   ]
 
-  const allowedMenu = computed(() => {
-    if (!authReady.value || !userRole.value) return []
+const allowedMenu = computed(() => {
+  // HAPUS baris ini supaya computed tetap hidup
+  // if (!authReady.value || !userRole.value) return []
 
-    return fullMenu
-      .filter(g => (g.show ? g.show() : true))              // filter group
-      .map(g => ({
-        ...g,
-        icon: iconMap[g.icon] || HomeIcon,
-        children: g.children
-          ?.filter(c => c.roles.includes(userRole.value) && (c.show ? c.show() : true))
-          .map(c => ({ ...c, icon: iconMap[c.icon] || HomeIcon }))
-      }))
-      .filter(g =>
-        g.roles.includes(userRole.value) &&
-        (g.children ? g.children.length > 0 : true)
-      )
-  })
+  const role = userRole.value
+  if (!role) return [] // boleh ini, asal tidak blokir reaktivitas
+
+  return fullMenu
+    .filter(g => (g.show ? g.show() : true))
+    .map(g => ({
+      ...g,
+      icon: iconMap[g.icon] || HomeIcon,
+      children: g.children
+        ?.filter(c => c.roles.includes(role) && (c.show ? c.show() : true))
+        .map(c => ({ ...c, icon: iconMap[c.icon] || HomeIcon }))
+    }))
+    .filter(g =>
+      g.roles.includes(role) &&
+      (g.children ? g.children.length > 0 : true)
+    )
+})
 
   return { menu: allowedMenu }
 }

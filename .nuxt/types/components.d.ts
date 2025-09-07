@@ -21,6 +21,7 @@ interface _GlobalComponents {
     'DivisionForm': typeof import("../components/DivisionForm.vue")['default']
     'FloorForm': typeof import("../components/FloorForm.vue")['default']
     'ItemTypeForm': typeof import("../components/ItemTypeForm.vue")['default']
+    'LoadingLottie': typeof import("../components/LoadingLottie.vue")['default']
     'RoomForm': typeof import("../components/RoomForm.vue")['default']
     'UnitForm': typeof import("../components/UnitForm.vue")['default']
     'UserForm': typeof import("../components/UserForm.vue")['default']
@@ -108,6 +109,7 @@ interface _GlobalComponents {
     'LazyDivisionForm': LazyComponent<typeof import("../components/DivisionForm.vue")['default']>
     'LazyFloorForm': LazyComponent<typeof import("../components/FloorForm.vue")['default']>
     'LazyItemTypeForm': LazyComponent<typeof import("../components/ItemTypeForm.vue")['default']>
+    'LazyLoadingLottie': LazyComponent<typeof import("../components/LoadingLottie.vue")['default']>
     'LazyRoomForm': LazyComponent<typeof import("../components/RoomForm.vue")['default']>
     'LazyUnitForm': LazyComponent<typeof import("../components/UnitForm.vue")['default']>
     'LazyUserForm': LazyComponent<typeof import("../components/UserForm.vue")['default']>

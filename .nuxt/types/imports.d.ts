@@ -77,6 +77,7 @@ declare global {
   const logicAnd: typeof import('../../node_modules/@vueuse/math')['logicAnd']
   const logicNot: typeof import('../../node_modules/@vueuse/math')['logicNot']
   const logicOr: typeof import('../../node_modules/@vueuse/math')['logicOr']
+  const lottiePlayer: typeof import('../../composables/lottie-player')['default']
   const makeDestructurable: typeof import('../../node_modules/@vueuse/core')['makeDestructurable']
   const markRaw: typeof import('vue')['markRaw']
   const mergeModels: typeof import('vue')['mergeModels']
@@ -532,6 +533,7 @@ declare module 'vue' {
     readonly logicAnd: UnwrapRef<typeof import('../../node_modules/@vueuse/math')['logicAnd']>
     readonly logicNot: UnwrapRef<typeof import('../../node_modules/@vueuse/math')['logicNot']>
     readonly logicOr: UnwrapRef<typeof import('../../node_modules/@vueuse/math')['logicOr']>
+    readonly lottiePlayer: UnwrapRef<typeof import('../../composables/lottie-player')['default']>
     readonly makeDestructurable: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['makeDestructurable']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
     readonly mergeModels: UnwrapRef<typeof import('vue')['mergeModels']>

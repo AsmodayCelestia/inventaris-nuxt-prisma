@@ -1,12 +1,24 @@
 <template>
-  <!-- 1. Tahan SEMUA sampai auth siap -->
-  <div v-if="!authReady" class="min-h-screen flex items-center justify-center">
-    <div class="text-sm text-slate-600">Loading...</div>
-  </div>
+  <!-- 1. Overlay loading SELALU di-render, tapi hanya V-SHOW ketika !authReady -->
+  <Transition enter-active-class="duration-300" leave-active-class="duration-300">
+    <div
+      v-show="!authReady"
+      class="fixed inset-0 z-50 grid place-items-center bg-black/60 backdrop-blur-sm"
+    >
+      <div class="text-center scale-125">
+        <lottie-player
+          src="/loading.json"
+          background="transparent"
+          speed="1"
+          style="width:180px;height:180px"
+          autoplay
+        ></lottie-player>
+      </div>
+    </div>
+  </Transition>
 
-  <!-- 2. Kalau sudah ready baru tampil full layout -->
-  <div v-else class="min-h-screen bg-gray-100">
-    <!-- Overlay -->
+  <!-- 2. Layout utama BARU DI-RENDER setelah authReady (menu & user siap) -->
+  <div v-if="authReady" class="min-h-screen bg-gray-100">
     <Transition name="fade">
       <div
         v-if="sidebarOpen"
@@ -25,20 +37,13 @@
     >
       <!-- Brand -->
       <div class="h-16 flex items-center px-4 gap-3 border-b border-slate-700">
-        <img
-          src="https://placehold.co/36x36/ffffff/0ea5e9?text=I "
-          alt="Logo"
-          class="w-9 h-9 rounded"
-        >
+        <img src="https://placehold.co/36x36/ffffff/0ea5e9?text=I" alt="Logo" class="w-9 h-9 rounded">
         <span class="font-semibold tracking-wide">Inventaris</span>
       </div>
 
       <!-- User panel -->
       <div class="p-4 flex items-center gap-3 border-b border-slate-700">
-        <img
-          src="https://placehold.co/40x40/cccccc/ffffff?text=U "
-          class="w-10 h-10 rounded-full"
-        >
+        <img src="https://placehold.co/40x40/cccccc/ffffff?text=U" class="w-10 h-10 rounded-full">
         <div>
           <div class="text-sm font-semibold">{{ userName }}</div>
           <div class="text-xs text-slate-300">{{ userRole }}</div>
@@ -48,7 +53,6 @@
       <!-- Menu -->
       <nav class="flex-1 px-2 py-4 space-y-1 text-sm">
         <template v-for="m in menu" :key="m.label">
-          <!-- single link -->
           <NuxtLink
             v-if="!m.children"
             :to="m.to"
@@ -91,22 +95,18 @@
     <!-- Page Wrapper -->
     <div class="flex flex-col">
       <!-- Topbar -->
-    <header class="h-14 bg-white shadow flex items-center justify-between px-4">
+      <header class="h-14 bg-white shadow flex items-center justify-between px-4">
         <div class="flex items-center gap-3">
-        <button @click="sidebarOpen = !sidebarOpen" class="text-slate-600">
+          <button @click="sidebarOpen = !sidebarOpen" class="text-slate-600">
             <Bars3Icon class="w-6 h-6" />
-        </button>
-        <!-- judul dinamis & di kiri -->
-        <div class="text-sm text-slate-700 capitalize">
-            {{ pageTitle }}
+          </button>
+          <div class="text-sm text-slate-700 capitalize">{{ pageTitle }}</div>
         </div>
-        </div>
-
         <div class="flex items-center gap-3">
-        <span class="text-sm text-slate-700">Halo, <b>{{ userName }}</b></span>
-        <UButton label="Logout" color="gray" size="xs" @click="logout" />
+          <span class="text-sm text-slate-700">Halo, <b>{{ userName }}</b></span>
+          <UButton label="Logout" color="gray" size="xs" @click="logout" />
         </div>
-    </header>
+      </header>
 
       <!-- Content -->
       <main class="flex-1 p-4 overflow-auto">
@@ -122,21 +122,13 @@
 </template>
 
 <script setup>
-/* ---------- Icon ---------- */
-import {
-  Bars3Icon,
-  ChevronRightIcon
-} from '@heroicons/vue/24/outline'
-
-/* ---------- Auth & Menu ---------- */
+import { Bars3Icon, ChevronRightIcon } from '@heroicons/vue/24/outline'
 const { userName, userRole, logout, authReady } = useAuth()
-const { menu } = useMenu()          // icon sudah komponen Vue
+const { menu } = useMenu()
 
-/* ---------- Collapse ---------- */
 const open = reactive({})
 const toggle = (key) => (open[key] = !open[key])
 
-/* ---------- Sidebar state & click-outside ---------- */
 const sidebarOpen = ref(false)
 const sidebarEl = ref(null)
 onClickOutside(sidebarEl, () => (sidebarOpen.value = false))
@@ -145,9 +137,7 @@ const route = useRoute()
 const pageTitle = computed(() => {
   const parts = route.path.split('/').filter(Boolean)
   if (!parts.length) return 'Dashboard'
-  // ambil segmen terakhir
-  const last = parts[parts.length - 1]
-  return last.replace(/-/g, ' ')
+  return parts[parts.length - 1].replace(/-/g, ' ')
 })
 </script>
 

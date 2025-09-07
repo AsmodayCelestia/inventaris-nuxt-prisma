@@ -21,6 +21,7 @@ export const Collapse: typeof import("../components/Collapse.vue")['default']
 export const DivisionForm: typeof import("../components/DivisionForm.vue")['default']
 export const FloorForm: typeof import("../components/FloorForm.vue")['default']
 export const ItemTypeForm: typeof import("../components/ItemTypeForm.vue")['default']
+export const LoadingLottie: typeof import("../components/LoadingLottie.vue")['default']
 export const RoomForm: typeof import("../components/RoomForm.vue")['default']
 export const UnitForm: typeof import("../components/UnitForm.vue")['default']
 export const UserForm: typeof import("../components/UserForm.vue")['default']
@@ -108,6 +109,7 @@ export const LazyCollapse: LazyComponent<typeof import("../components/Collapse.v
 export const LazyDivisionForm: LazyComponent<typeof import("../components/DivisionForm.vue")['default']>
 export const LazyFloorForm: LazyComponent<typeof import("../components/FloorForm.vue")['default']>
 export const LazyItemTypeForm: LazyComponent<typeof import("../components/ItemTypeForm.vue")['default']>
+export const LazyLoadingLottie: LazyComponent<typeof import("../components/LoadingLottie.vue")['default']>
 export const LazyRoomForm: LazyComponent<typeof import("../components/RoomForm.vue")['default']>
 export const LazyUnitForm: LazyComponent<typeof import("../components/UnitForm.vue")['default']>
 export const LazyUserForm: LazyComponent<typeof import("../components/UserForm.vue")['default']>

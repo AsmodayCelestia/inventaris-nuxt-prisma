@@ -1,4 +1,3 @@
-// composables/useAuth.js
 export const useAuth = () => {
   /* ---------- state ---------- */
   const authUser  = useState('auth.user',  () => null)
@@ -8,12 +7,12 @@ export const useAuth = () => {
   const token = useCookie('auth-token', {
     default: () => null,
     httpOnly: false,
-    secure: process.dev ? false : true,
+    secure: !process.dev,
     sameSite: 'lax',
     maxAge: 60 * 60 * 24 * 7
   })
 
-  /* ---------- getters ---------- */
+  /* ---------- getter ---------- */
   const isLoggedIn = computed(() => !!authUser.value)
   const isAdmin    = computed(() => authUser.value?.role === 'admin')
   const isHead     = computed(() => authUser.value?.role === 'head')
@@ -27,20 +26,9 @@ export const useAuth = () => {
   const isRoomSupervisor  = computed(() => !!authUser.value?.isRoomSupervisor)
   const assignedRooms     = computed(() => authUser.value?.assignedRooms ?? [])
 
-  const canAccessMaintenance = computed(() => {
-    if (isAdmin.value) return true
-    return userDivisi.value === 'Umum'
-  })
-
-  const canSeePrice = computed(() => {
-    if (isAdmin.value) return true
-    return userDivisi.value === 'Keuangan'
-  })
-
-  const canUpdatePrice = computed(() => {
-    if (isAdmin.value) return true
-    return userDivisi.value === 'Keuangan'
-  })
+  const canAccessMaintenance = computed(() => isAdmin.value || userDivisi.value === 'Umum')
+  const canSeePrice          = computed(() => isAdmin.value || userDivisi.value === 'Keuangan')
+  const canUpdatePrice       = computed(() => isAdmin.value || userDivisi.value === 'Keuangan')
 
   const canReportRoom = (roomId) => {
     if (isAdmin.value) return true
@@ -48,19 +36,21 @@ export const useAuth = () => {
     return assignedRooms.value.includes(roomId)
   }
 
-  /* ---------- actions ---------- */
+  /* ---------- action ---------- */
   const initializeAuth = async () => {
     if (process.server) return
     if (!token.value) { authReady.value = true; return }
 
     try {
-      const data = await $fetch('/api/users/me', { credentials: 'include' })
-      authUser.value = data
+      // 1. ambil user
+      const user = await $fetch('/api/users/me', { credentials: 'include' })
+      authUser.value = user
+
     } catch {
       authUser.value = null
-      token.value = null
+      token.value    = null
     } finally {
-      authReady.value = true
+      authReady.value = true // baru hilang overlay
     }
   }
 
@@ -78,6 +68,9 @@ export const useAuth = () => {
     authUser.value = null
     await navigateTo('/login')
   }
+
+  /* ---------- init otomatis (client saja) ---------- */
+  if (process.client) initializeAuth()
 
   return {
     authUser:  readonly(authUser),
