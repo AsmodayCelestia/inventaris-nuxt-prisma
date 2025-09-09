@@ -1,5 +1,6 @@
-export default function () {
-  if (process.client) {
-    import('@lottiefiles/lottie-player')
+// composables/load-lottie.client.ts
+export default async function () {
+  if (process.client && !customElements.get('lottie-player')) {
+    await import('@lottiefiles/lottie-player')
   }
 }
