@@ -72,8 +72,9 @@ const qrCount     = 567
 
 /* ========== tunda tampilan supaya overlay pageLoading terlihat ========== */
 onMounted(async () => {
-  pageLoading.value = true  // nyalakan overlay global
-  await new Promise(r => setTimeout(r, 1200)) // 1,2 detik
-  pageLoading.value = false // matikan overlay global
+  pageLoading.value = true
+  await nextTick()
+  await new Promise(r => setTimeout(r, 1200))
+  pageLoading.value = false
 })
 </script>

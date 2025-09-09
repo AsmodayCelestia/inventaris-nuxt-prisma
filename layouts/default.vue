@@ -23,7 +23,7 @@
   >
     <div
       v-if="pageLoading"
-      class="fixed inset-0 z-40 grid place-items-center bg-white/80 backdrop-blur-sm"
+      class="fixed inset-0 z-40 grid place-items-center bg-black/80 backdrop-blur-sm"
     >
       <LoadingLottie text="Loading page…" />
     </div>

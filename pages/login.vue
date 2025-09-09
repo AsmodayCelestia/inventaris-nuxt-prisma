@@ -4,7 +4,7 @@
     <div
       v-if="isLoading"
       class="fixed inset-0 z-50 grid place-items-center
-             bg-black/60 backdrop-blur-sm"
+             bg-black/80 backdrop-blur-sm"
     >
       <LoadingLottie text="Signing you in…" class="scale-125" />
     </div>
