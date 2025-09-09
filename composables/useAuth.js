@@ -2,6 +2,7 @@ export const useAuth = () => {
   /* ---------- state ---------- */
   const authUser  = useState('auth.user',  () => null)
   const authReady = useState('auth.ready', () => false)
+  const pageLoading = useState('page.loading', () => false)
 
   /* ---------- cookie ---------- */
   const token = useCookie('auth-token', {
@@ -91,6 +92,7 @@ export const useAuth = () => {
     canReportRoom,
     initializeAuth,
     login,
-    logout
+    logout,
+    pageLoading: readonly(pageLoading)
   }
 }
