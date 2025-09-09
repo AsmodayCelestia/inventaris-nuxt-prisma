@@ -9,7 +9,7 @@
         </div>
       </div>
 
-      <!-- Card Summary (langsung pakai data) -->
+      <!-- Card Summary (hard-code) -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <UCard>
           <template #header>
@@ -54,7 +54,12 @@
 
       <!-- Quick Action -->
       <div class="flex flex-wrap gap-3">
-        <UButton v-if="isAdmin || isHead" label="Tambah Barang Baru" icon="i-heroicons-plus" to="/inventories/add" />
+        <UButton
+          v-if="isAdmin || isHead"
+          label="Tambah Barang Baru"
+          icon="i-heroicons-plus"
+          to="/inventories/add"
+        />
         <UButton label="Scan QR" icon="i-heroicons-qr-code" color="gray" to="/scan-qrcode" />
       </div>
     </div>
@@ -62,19 +67,11 @@
 </template>
 
 <script setup>
-const { isAdmin, isHead, pageLoading } = useAuth()
-
-/* ========== hard-code dummy data ========== */
+const { isAdmin, isHead } = useAuth()
+/* ========== dummy data ========== */
 const totalBarang = 1234
 const maintToday  = 12
 const aktifCount  = 987
 const qrCount     = 567
 
-/* ========== tunda tampilan supaya overlay pageLoading terlihat ========== */
-onMounted(async () => {
-  pageLoading.value = true
-  await nextTick()
-  await new Promise(r => setTimeout(r, 1200))
-  pageLoading.value = false
-})
 </script>

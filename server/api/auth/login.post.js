@@ -1,5 +1,4 @@
-// server/api/auth/login.post.js
-import { setCookie } from 'h3' // <-- PASTIKAN diimport
+import { setCookie } from 'h3'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { prisma } from '~~/server/utils/prisma.js'
@@ -19,14 +18,14 @@ export default defineEventHandler(async (event) => {
     { expiresIn: '1d' }
   )
 
+  const isDev = process.dev
   setCookie(event, 'auth-token', token, {
-    httpOnly: false,
-    secure: process.env.NODE_ENV === 'production', // true hanya di prod
+    httpOnly: !isDev,          // false di dev, true di prod
+    secure: !isDev,
     sameSite: 'lax',
     maxAge: 60 * 60 * 24,
     path: '/'
   })
 
-  // return terakhir
   return { user: sterilBigInt(user) }
 })

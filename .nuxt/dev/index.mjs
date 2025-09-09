@@ -1242,7 +1242,7 @@ async function errorHandler(error, event) {
 
 const rootDir = "/Users/macbookpro/Documents/inventarisNextjs/web";
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[{"src":"https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js","defer":true}],"noscript":[]};
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[],"noscript":[]};
 
 const appRootTag = "div";
 
@@ -2298,8 +2298,8 @@ const login_post = defineEventHandler(async (event) => {
   );
   setCookie(event, "auth-token", token, {
     httpOnly: false,
+    // false di dev, true di prod
     secure: false,
-    // true hanya di prod
     sameSite: "lax",
     maxAge: 60 * 60 * 24,
     path: "/"
@@ -2770,9 +2770,16 @@ const index_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProper
 
 const me_get = defineEventHandler(async (event) => {
   var _a, _b;
-  const { auth } = event.context;
-  const userId = Number(auth.id);
-  if (!Number.isFinite(userId)) throw createError({ statusCode: 401, statusMessage: "Malformed id" });
+  const token = getCookie(event, "auth-token");
+  if (!token) throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
+  let payload;
+  try {
+    payload = jwt.verify(token, process.env.JWT_SECRET);
+  } catch {
+    throw createError({ statusCode: 401, statusMessage: "Invalid token" });
+  }
+  const userId = Number(payload.id);
+  if (!Number.isFinite(userId)) throw createError({ statusCode: 401 });
   const user = await prisma.users.findUnique({
     where: { id: BigInt(userId) },
     select: {
@@ -2781,25 +2788,19 @@ const me_get = defineEventHandler(async (event) => {
       email: true,
       role: true,
       division_id: true,
-      divisions: {
-        select: {
-          name: true
-          // hanya nama
-        }
-      },
+      divisions: { select: { name: true } },
       is_room_supervisor: true,
       is_pj_maintenance: true
-      // <-- ini yang benar
     }
   });
-  if (!user) throw createError({ statusCode: 401, statusMessage: "User not found" });
+  if (!user) throw createError({ statusCode: 401 });
   return sterilBigInt({
     ...user,
     division: (_b = (_a = user.divisions) == null ? void 0 : _a.name) != null ? _b : null,
     isPjMaintenance: user.is_pj_maintenance,
     isRoomSupervisor: user.is_room_supervisor,
     assignedRooms: []
-    // belum ada relasi user_rooms
+    // nanti diisi
   });
 });
 

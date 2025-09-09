@@ -1,8 +1,6 @@
 <template>
   <div class="grid place-items-center">
-    <!-- player baru dibuat setelah load -->
     <lottie-player
-      v-if="mounted"
       src="/loading.json"
       background="transparent"
       speed="1"
@@ -15,14 +13,5 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
-import loadLottie from '@/composables/lottie-player'
-
 defineProps({ text: { type: String, default: 'Loading...' } })
-
-const mounted = ref(false)
-onMounted(async () => {
-  await loadLottie()   // muat player
-  mounted.value = true // baru render tag <lottie-player>
-})
 </script>

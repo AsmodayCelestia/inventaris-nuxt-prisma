@@ -1,30 +1,20 @@
+//components/AppLayout.vue
 <template>
-  <!-- Splash / Overlay -->
+  <!-- 1. overlay auth -->
   <Transition
-    enter-active-class="duration-300 ease-out"
-    leave-active-class="duration-500 ease-in"
   >
     <div
       v-if="!authReady"
       class="fixed inset-0 z-50 grid place-items-center bg-black/80 backdrop-blur"
     >
-      <div class="text-center scale-110 animate-fade-in">
-        <lottie-player
-          src="/loading.json"
-          background="transparent"
-          speed="1"
-          style="width:180px;height:180px"
-          autoplay
-        />
-        <p class="mt-4 text-sm text-white/80">Preparing your workspace…</p>
-      </div>
+      <LoadingLottie text="Preparing your workspace…" class="scale-125" />
     </div>
   </Transition>
 
-  <!-- Layout utama -->
+  <!-- 2. layout utama -->
   <Transition name="fade">
     <div v-if="authReady" class="min-h-screen bg-gray-100">
-      <!-- Overlay sidebar -->
+      <!-- overlay sidebar mobile -->
       <Transition name="fade">
         <div
           v-if="sidebarOpen"
@@ -33,7 +23,7 @@
         />
       </Transition>
 
-      <!-- Sidebar -->
+      <!-- sidebar -->
       <aside
         ref="sidebarEl"
         class="w-64 bg-slate-800 text-slate-100 flex flex-col shadow-2xl
@@ -41,13 +31,13 @@
                transition-transform duration-300"
         :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
       >
-        <!-- Brand -->
+        <!-- brand -->
         <div class="h-16 flex items-center px-4 gap-3 border-b border-slate-700">
           <img src="https://placehold.co/36x36/ffffff/0ea5e9?text=I" alt="Logo" class="w-9 h-9 rounded">
           <span class="font-semibold tracking-wide">Inventaris</span>
         </div>
 
-        <!-- User panel -->
+        <!-- user panel -->
         <div class="p-4 flex items-center gap-3 border-b border-slate-700">
           <img src="https://placehold.co/40x40/cccccc/ffffff?text=U" class="w-10 h-10 rounded-full">
           <div>
@@ -56,7 +46,7 @@
           </div>
         </div>
 
-        <!-- Menu -->
+        <!-- menu -->
         <nav class="flex-1 px-2 py-4 space-y-1 text-sm">
           <template v-for="m in menu" :key="m.label">
             <NuxtLink
@@ -98,9 +88,9 @@
         </nav>
       </aside>
 
-      <!-- Page Wrapper -->
+      <!-- page wrapper -->
       <div class="flex flex-col">
-        <!-- Topbar -->
+        <!-- topbar -->
         <header class="h-14 bg-white shadow flex items-center justify-between px-4">
           <div class="flex items-center gap-3">
             <button @click="sidebarOpen = !sidebarOpen" class="text-slate-600">
@@ -114,12 +104,12 @@
           </div>
         </header>
 
-        <!-- Content -->
+        <!-- content -->
         <main class="flex-1 p-4 overflow-auto">
           <slot />
         </main>
 
-        <!-- Footer -->
+        <!-- footer -->
         <footer class="h-10 bg-white border-t flex items-center px-4 text-xs text-slate-500">
           © {{ new Date().getFullYear() }} Inventaris APP
         </footer>
@@ -130,6 +120,8 @@
 
 <script setup>
 import { Bars3Icon, ChevronRightIcon } from '@heroicons/vue/24/outline'
+import LoadingLottie from '@/components/LoadingLottie.vue'
+
 const { userName, userRole, logout, authReady } = useAuth()
 const { menu } = useMenu()
 
@@ -157,7 +149,6 @@ const pageTitle = computed(() => {
 .fade-leave-to {
   opacity: 0;
 }
-
 @keyframes fade-in {
   from { opacity: 0; transform: scale(0.95); }
   to   { opacity: 1; transform: scale(1); }

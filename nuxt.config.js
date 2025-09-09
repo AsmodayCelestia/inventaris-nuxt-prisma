@@ -19,16 +19,5 @@ export default {
     compilerOptions: {
       isCustomElement: (tag) => tag === 'lottie-player',
     },
-  },
-
-  app: {
-    head: {
-      script: [
-        {
-          src: 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js',
-          defer: true,
-        },
-      ],
-    },
-  },
+  }
 }

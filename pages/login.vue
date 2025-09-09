@@ -53,7 +53,6 @@
   </main>
 </template>
 
-
 <script setup>
 definePageMeta({ layout: false })
 useSeoMeta({ title: 'Login' })
@@ -67,12 +66,15 @@ const uiInput = {
   leading: { icon: 'text-slate-400' }
 }
 
-async function handleLogin () {
+// pages/login.vue
+async function handleLogin() {
   try {
     error.value = ''
     isLoading.value = true
     await login(email.value, password.value)
-    await navigateTo('/dashboard')
+
+    // langsung ke dashboard, jangan ke /login lagi
+    return navigateTo('/dashboard', { replace: true })
   } catch (e) {
     error.value = e?.data?.message || 'Login failed'
   } finally {
