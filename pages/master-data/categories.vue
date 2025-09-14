@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useCategories } from '~/composables/useCategories'
 import CategoryForm from '~/components/CategoryForm.vue'
 
@@ -48,6 +48,12 @@ const { categories, fetchCategories, removeCategory } = useCategories()
 const showForm = ref(false)
 const selected = ref(null)
 
+// 1. TOP-LEVEL → jalan di server (SSR) & client (navigasi)
+await fetchCategories()
+
+// 2. onMounted cuma untuk DOM-related (kalau ada)
+// onMounted(() => { /* init tooltip, dll */ })
+
 const openForm = (cat = null) => {
   selected.value = cat
   showForm.value = true
@@ -56,7 +62,7 @@ const openForm = (cat = null) => {
 const handleSaved = async () => {
   showForm.value = false
   selected.value = null
-  await fetchCategories()
+  await fetchCategories()   // refresh setelah tambah/edit
 }
 
 const deleteCategory = async (id) => {
@@ -65,6 +71,4 @@ const deleteCategory = async (id) => {
     await fetchCategories()
   }
 }
-
-onMounted(fetchCategories)
 </script>

@@ -39,6 +39,30 @@ declare module "nitropack/types" {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/floors/index.get').default>>>>
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/floors/index.post').default>>>>
     }
+    '/api/inventories/:id': {
+      'delete': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/inventories/[id].delete').default>>>>
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/inventories/[id].get').default>>>>
+      'put': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/inventories/[id].put').default>>>>
+    }
+    '/api/inventories': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/inventories/index.get').default>>>>
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/inventories/index.post').default>>>>
+    }
+    '/api/inventories/table': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/inventories/table.get').default>>>>
+    }
+    '/api/inventory-items/:id': {
+      'delete': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/inventory-items/[id].delete').default>>>>
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/inventory-items/[id].get').default>>>>
+      'put': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/inventory-items/[id].put').default>>>>
+    }
+    '/api/inventory-items/datatable': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/inventory-items/datatable.get').default>>>>
+    }
+    '/api/inventory-items': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/inventory-items/index.get').default>>>>
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/inventory-items/index.post').default>>>>
+    }
     '/api/item-types/:id': {
       'delete': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/item-types/[id].delete').default>>>>
       'put': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/item-types/[id].put').default>>>>

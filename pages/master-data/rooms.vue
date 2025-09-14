@@ -9,6 +9,13 @@ const showForm = ref(false)
 const selectedRoom = ref(null)
 const loading = ref(true)
 
+// 1. TOP-LEVEL → server (SSR) & client (navigasi)
+await fetchRooms()
+loading.value = false          // langsung matikan loading
+
+// 2. onMounted cuma DOM (kalau perlu)
+// onMounted(() => { /* init tooltip, etc */ })
+
 const openForm = (r = null) => {
   selectedRoom.value = r
   showForm.value = true
@@ -22,13 +29,9 @@ const handleSaved = async () => {
 const remove = async (id) => {
   if (confirm('Yakin ingin menghapus ruangan ini?')) {
     await removeRoom(id)
+    await fetchRooms()
   }
 }
-
-onMounted(async () => {
-  await fetchRooms()
-  loading.value = false
-})
 </script>
 
 <template>

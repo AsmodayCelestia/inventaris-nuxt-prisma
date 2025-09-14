@@ -1573,8 +1573,8 @@ function publicAssetsURL(...path) {
   return path.length ? joinRelativeURL(publicBase, ...path) : publicBase;
 }
 
-const prisma = global.prisma || new PrismaClient();
-global.prisma = prisma;
+const prisma$b = global.prisma || new PrismaClient();
+global.prisma = prisma$b;
 
 function sterilBigInt(obj) {
   return JSON.parse(
@@ -1952,23 +1952,35 @@ async function getIslandContext(event) {
 }
 
 const _lazy_uuh_8M = () => Promise.resolve().then(function () { return login_post$1; });
-const _lazy_gt6fkU = () => Promise.resolve().then(function () { return _id__delete$f; });
-const _lazy_Ks663Y = () => Promise.resolve().then(function () { return _id__put$e; });
-const _lazy_FrdMRG = () => Promise.resolve().then(function () { return index_get$f; });
-const _lazy_Rlxkdg = () => Promise.resolve().then(function () { return index_post$f; });
-const _lazy_9WM8cv = () => Promise.resolve().then(function () { return _id__delete$d; });
-const _lazy_RjFOY1 = () => Promise.resolve().then(function () { return _id__put$c; });
-const _lazy_Iri47J = () => Promise.resolve().then(function () { return index_get$d; });
-const _lazy_saaYb3 = () => Promise.resolve().then(function () { return index_post$d; });
-const _lazy_R6Pgp7 = () => Promise.resolve().then(function () { return _id__delete$b; });
-const _lazy_MaCPFL = () => Promise.resolve().then(function () { return _id__get$1; });
-const _lazy_6W_CAv = () => Promise.resolve().then(function () { return _id__put$a; });
-const _lazy_6cS6OX = () => Promise.resolve().then(function () { return index_get$b; });
-const _lazy_2swmvh = () => Promise.resolve().then(function () { return index_post$b; });
-const _lazy_6alHPA = () => Promise.resolve().then(function () { return _id__delete$9; });
-const _lazy_C0MHM_ = () => Promise.resolve().then(function () { return _id__put$9; });
-const _lazy_ZVW16s = () => Promise.resolve().then(function () { return index_get$9; });
-const _lazy_mgNiGc = () => Promise.resolve().then(function () { return index_post$9; });
+const _lazy_gt6fkU = () => Promise.resolve().then(function () { return _id__delete$j; });
+const _lazy_Ks663Y = () => Promise.resolve().then(function () { return _id__put$i; });
+const _lazy_FrdMRG = () => Promise.resolve().then(function () { return index_get$j; });
+const _lazy_Rlxkdg = () => Promise.resolve().then(function () { return index_post$j; });
+const _lazy_9WM8cv = () => Promise.resolve().then(function () { return _id__delete$h; });
+const _lazy_RjFOY1 = () => Promise.resolve().then(function () { return _id__put$g; });
+const _lazy_Iri47J = () => Promise.resolve().then(function () { return index_get$h; });
+const _lazy_saaYb3 = () => Promise.resolve().then(function () { return index_post$h; });
+const _lazy_R6Pgp7 = () => Promise.resolve().then(function () { return _id__delete$f; });
+const _lazy_MaCPFL = () => Promise.resolve().then(function () { return _id__get$5; });
+const _lazy_6W_CAv = () => Promise.resolve().then(function () { return _id__put$e; });
+const _lazy_6cS6OX = () => Promise.resolve().then(function () { return index_get$f; });
+const _lazy_2swmvh = () => Promise.resolve().then(function () { return index_post$f; });
+const _lazy_6alHPA = () => Promise.resolve().then(function () { return _id__delete$d; });
+const _lazy_C0MHM_ = () => Promise.resolve().then(function () { return _id__put$d; });
+const _lazy_ZVW16s = () => Promise.resolve().then(function () { return index_get$d; });
+const _lazy_mgNiGc = () => Promise.resolve().then(function () { return index_post$d; });
+const _lazy_9T1GjZ = () => Promise.resolve().then(function () { return _id__delete$b; });
+const _lazy_1jZDQd = () => Promise.resolve().then(function () { return _id__get$3; });
+const _lazy_K0rMVR = () => Promise.resolve().then(function () { return _id__put$b; });
+const _lazy_dW9Tk1 = () => Promise.resolve().then(function () { return index_get$b; });
+const _lazy_DUny6K = () => Promise.resolve().then(function () { return index_post$b; });
+const _lazy_4X702M = () => Promise.resolve().then(function () { return table_get$1; });
+const _lazy_sopzyS = () => Promise.resolve().then(function () { return _id__delete$9; });
+const _lazy_q2cHDS = () => Promise.resolve().then(function () { return _id__get$1; });
+const _lazy_fVCQZy = () => Promise.resolve().then(function () { return _id__put$9; });
+const _lazy_etNMSg = () => Promise.resolve().then(function () { return datatable_get$1; });
+const _lazy_QJFe61 = () => Promise.resolve().then(function () { return index_get$9; });
+const _lazy_dOMReR = () => Promise.resolve().then(function () { return index_post$9; });
 const _lazy_uShz_8 = () => Promise.resolve().then(function () { return _id__delete$7; });
 const _lazy_71m2f1 = () => Promise.resolve().then(function () { return _id__put$7; });
 const _lazy_UsplfQ = () => Promise.resolve().then(function () { return index_get$7; });
@@ -2010,6 +2022,18 @@ const handlers = [
   { route: '/api/floors/:id', handler: _lazy_C0MHM_, lazy: true, middleware: false, method: "put" },
   { route: '/api/floors', handler: _lazy_ZVW16s, lazy: true, middleware: false, method: "get" },
   { route: '/api/floors', handler: _lazy_mgNiGc, lazy: true, middleware: false, method: "post" },
+  { route: '/api/inventories/:id', handler: _lazy_9T1GjZ, lazy: true, middleware: false, method: "delete" },
+  { route: '/api/inventories/:id', handler: _lazy_1jZDQd, lazy: true, middleware: false, method: "get" },
+  { route: '/api/inventories/:id', handler: _lazy_K0rMVR, lazy: true, middleware: false, method: "put" },
+  { route: '/api/inventories', handler: _lazy_dW9Tk1, lazy: true, middleware: false, method: "get" },
+  { route: '/api/inventories', handler: _lazy_DUny6K, lazy: true, middleware: false, method: "post" },
+  { route: '/api/inventories/table', handler: _lazy_4X702M, lazy: true, middleware: false, method: "get" },
+  { route: '/api/inventory-items/:id', handler: _lazy_sopzyS, lazy: true, middleware: false, method: "delete" },
+  { route: '/api/inventory-items/:id', handler: _lazy_q2cHDS, lazy: true, middleware: false, method: "get" },
+  { route: '/api/inventory-items/:id', handler: _lazy_fVCQZy, lazy: true, middleware: false, method: "put" },
+  { route: '/api/inventory-items/datatable', handler: _lazy_etNMSg, lazy: true, middleware: false, method: "get" },
+  { route: '/api/inventory-items', handler: _lazy_QJFe61, lazy: true, middleware: false, method: "get" },
+  { route: '/api/inventory-items', handler: _lazy_dOMReR, lazy: true, middleware: false, method: "post" },
   { route: '/api/item-types/:id', handler: _lazy_uShz_8, lazy: true, middleware: false, method: "delete" },
   { route: '/api/item-types/:id', handler: _lazy_71m2f1, lazy: true, middleware: false, method: "put" },
   { route: '/api/item-types', handler: _lazy_UsplfQ, lazy: true, middleware: false, method: "get" },
@@ -2287,7 +2311,7 @@ const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 
 const login_post = defineEventHandler(async (event) => {
   const { email, password } = await readBody(event);
-  const user = await prisma.users.findUnique({ where: { email } });
+  const user = await prisma$b.users.findUnique({ where: { email } });
   if (!user || !bcrypt.compareSync(password, user.password)) {
     throw createError({ statusCode: 401, statusMessage: "Invalid credentials" });
   }
@@ -2312,10 +2336,98 @@ const login_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProper
   default: login_post
 }, Symbol.toStringTag, { value: 'Module' }));
 
+const _id__delete$i = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  await prisma$b.brands.delete({ where: { id } });
+  return { message: "Merk berhasil dihapus" };
+});
+
+const _id__delete$j = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__delete$i
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__put$h = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  const { name } = await readBody(event);
+  const brand = await prisma$b.brands.update({ where: { id }, data: { name } });
+  return sterilBigInt(brand);
+});
+
+const _id__put$i = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__put$h
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get$i = defineEventHandler(async () => {
+  const brands = await prisma$b.brands.findMany({ orderBy: { name: "asc" } });
+  return sterilBigInt(brands);
+});
+
+const index_get$j = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_get$i
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_post$i = defineEventHandler(async (event) => {
+  const { name } = await readBody(event);
+  const brand = await prisma$b.brands.create({ data: { name } });
+  return sterilBigInt(brand);
+});
+
+const index_post$j = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_post$i
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__delete$g = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  await prisma$b.categories.delete({ where: { id } });
+  return { message: "Kategori berhasil dihapus" };
+});
+
+const _id__delete$h = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__delete$g
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__put$f = defineEventHandler(async (event) => {
+  const id = BigInt(getRouterParam(event, "id"));
+  const { name } = await readBody(event);
+  const category = await prisma$b.categories.update({ where: { id }, data: { name } });
+  return sterilBigInt(category);
+});
+
+const _id__put$g = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__put$f
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get$g = defineEventHandler(async () => {
+  const categories = await prisma$b.categories.findMany({ orderBy: { name: "asc" } });
+  return sterilBigInt(categories);
+});
+
+const index_get$h = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_get$g
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_post$g = defineEventHandler(async (event) => {
+  const { name } = await readBody(event);
+  const category = await prisma$b.categories.create({ data: { name } });
+  return sterilBigInt(category);
+});
+
+const index_post$h = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_post$g
+}, Symbol.toStringTag, { value: 'Module' }));
+
 const _id__delete$e = defineEventHandler(async (event) => {
   const id = BigInt(getRouterParam(event, "id"));
-  await prisma.brands.delete({ where: { id } });
-  return { message: "Merk berhasil dihapus" };
+  await prisma$b.divisions.delete({ where: { id } });
+  return { message: "Divisi berhasil dihapus" };
 });
 
 const _id__delete$f = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2323,21 +2435,25 @@ const _id__delete$f = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePrope
   default: _id__delete$e
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _id__put$d = defineEventHandler(async (event) => {
+const _id__get$4 = defineEventHandler(async (event) => {
   const id = BigInt(getRouterParam(event, "id"));
-  const { name } = await readBody(event);
-  const brand = await prisma.brands.update({ where: { id }, data: { name } });
-  return sterilBigInt(brand);
+  const division = await prisma$b.divisions.findUnique({ where: { id } });
+  if (!division) throw createError({ statusCode: 404, statusMessage: "Divisi tidak ditemukan" });
+  return sterilBigInt(division);
 });
 
-const _id__put$e = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const _id__get$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  default: _id__put$d
+  default: _id__get$4
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__put$e = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const index_get$e = defineEventHandler(async () => {
-  const brands = await prisma.brands.findMany({ orderBy: { name: "asc" } });
-  return sterilBigInt(brands);
+  const divisions = await prisma$b.divisions.findMany({ orderBy: { name: "asc" } });
+  return sterilBigInt(divisions);
 });
 
 const index_get$f = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2347,8 +2463,8 @@ const index_get$f = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePropert
 
 const index_post$e = defineEventHandler(async (event) => {
   const { name } = await readBody(event);
-  const brand = await prisma.brands.create({ data: { name } });
-  return sterilBigInt(brand);
+  const division = await prisma$b.divisions.create({ data: { name } });
+  return sterilBigInt(division);
 });
 
 const index_post$f = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2358,8 +2474,8 @@ const index_post$f = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProper
 
 const _id__delete$c = defineEventHandler(async (event) => {
   const id = BigInt(getRouterParam(event, "id"));
-  await prisma.categories.delete({ where: { id } });
-  return { message: "Kategori berhasil dihapus" };
+  await prisma$b.floors.delete({ where: { id } });
+  return { message: "Lantai berhasil dihapus" };
 });
 
 const _id__delete$d = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2367,21 +2483,27 @@ const _id__delete$d = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePrope
   default: _id__delete$c
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _id__put$b = defineEventHandler(async (event) => {
+const _id__put$c = defineEventHandler(async (event) => {
   const id = BigInt(getRouterParam(event, "id"));
-  const { name } = await readBody(event);
-  const category = await prisma.categories.update({ where: { id }, data: { name } });
-  return sterilBigInt(category);
+  const { number, unit_id } = await readBody(event);
+  const floor = await prisma$b.floors.update({
+    where: { id },
+    data: { number, unit_id: BigInt(unit_id) }
+  });
+  return sterilBigInt(floor);
 });
 
-const _id__put$c = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const _id__put$d = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  default: _id__put$b
+  default: _id__put$c
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const index_get$c = defineEventHandler(async () => {
-  const categories = await prisma.categories.findMany({ orderBy: { name: "asc" } });
-  return sterilBigInt(categories);
+  const floors = await prisma$b.floors.findMany({
+    include: { location_units: { select: { id: true, name: true } } },
+    orderBy: { number: "asc" }
+  });
+  return sterilBigInt(floors);
 });
 
 const index_get$d = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2390,9 +2512,9 @@ const index_get$d = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePropert
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const index_post$c = defineEventHandler(async (event) => {
-  const { name } = await readBody(event);
-  const category = await prisma.categories.create({ data: { name } });
-  return sterilBigInt(category);
+  const { number, unit_id } = await readBody(event);
+  const floor = await prisma$b.floors.create({ data: { number, unit_id: BigInt(unit_id) } });
+  return sterilBigInt(floor);
 });
 
 const index_post$d = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2400,10 +2522,18 @@ const index_post$d = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProper
   default: index_post$c
 }, Symbol.toStringTag, { value: 'Module' }));
 
+const prisma$a = new PrismaClient();
 const _id__delete$a = defineEventHandler(async (event) => {
-  const id = BigInt(getRouterParam(event, "id"));
-  await prisma.divisions.delete({ where: { id } });
-  return { message: "Divisi berhasil dihapus" };
+  const user = event.context.auth;
+  if (!user) throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
+  const id = Number(getRouterParam(event, "id"));
+  if (!id) throw createError({ statusCode: 400, statusMessage: "ID required" });
+  const unit = await prisma$a.inventory.findUnique({ where: { id }, select: { inventoryItemId: true } });
+  if (!unit) throw createError({ statusCode: 404, statusMessage: "Unit tidak ditemukan" });
+  await prisma$a.inventory.delete({ where: { id } });
+  await prisma$a.inventoryItem.update({ where: { id: unit.inventoryItemId }, data: { quantity: { decrement: 1 } } });
+  setResponseStatus(event, 204);
+  return null;
 });
 
 const _id__delete$b = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2411,25 +2541,114 @@ const _id__delete$b = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePrope
   default: _id__delete$a
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _id__get = defineEventHandler(async (event) => {
-  const id = BigInt(getRouterParam(event, "id"));
-  const division = await prisma.divisions.findUnique({ where: { id } });
-  if (!division) throw createError({ statusCode: 404, statusMessage: "Divisi tidak ditemukan" });
-  return sterilBigInt(division);
+const prisma$9 = new PrismaClient();
+const _id__get$2 = defineEventHandler(async (event) => {
+  var _a;
+  const user = event.context.auth;
+  if (!user) throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
+  const id = Number(getRouterParam(event, "id"));
+  if (!id) throw createError({ statusCode: 400, statusMessage: "ID required" });
+  const data = await prisma$9.inventory.findUnique({
+    where: { id },
+    include: {
+      item: { include: { brand: true, category: true } },
+      room: { include: { floor: true } },
+      unit: true,
+      personInCharge: true,
+      maintenances: { orderBy: { createdAt: "desc" }, take: 1 }
+    }
+  });
+  if (!data) throw createError({ statusCode: 404, statusMessage: "Unit tidak ditemukan" });
+  const canSeePrice = user.role === "admin" || ((_a = user.division) == null ? void 0 : _a.name) === "Keuangan";
+  if (!canSeePrice) {
+    delete data.purchasePrice;
+    delete data.estimatedDepreciation;
+  }
+  return data;
 });
 
-const _id__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const _id__get$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  default: _id__get
+  default: _id__get$2
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _id__put$a = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null
+const prisma$8 = new PrismaClient();
+const _id__put$a = defineEventHandler(async (event) => {
+  var _a;
+  const user = event.context.auth;
+  if (!user) throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
+  const allowed = user.role === "admin" || user.role === "head" || user.role === "karyawan" && ((_a = user.division) == null ? void 0 : _a.name) === "Keuangan";
+  if (!allowed) throw createError({ statusCode: 403, statusMessage: "Tidak punya akses" });
+  const id = Number(getRouterParam(event, "id"));
+  if (!id) throw createError({ statusCode: 400, statusMessage: "ID required" });
+  const body = await readBody(event);
+  const { procurement_date, acquisition_source, purchase_price, unit_id, room_id, status, description = "" } = body;
+  const updated = await prisma$8.inventory.update({
+    where: { id },
+    data: {
+      procurement_date: new Date(procurement_date),
+      acquisition_source,
+      purchase_price: Number(purchase_price),
+      unit_id: Number(unit_id),
+      room_id: Number(room_id),
+      status,
+      description
+    }
+  });
+  return updated;
+});
+
+const _id__put$b = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__put$a
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const index_get$a = defineEventHandler(async () => {
-  const divisions = await prisma.divisions.findMany({ orderBy: { name: "asc" } });
-  return sterilBigInt(divisions);
+const prisma$7 = new PrismaClient();
+const index_get$a = defineEventHandler(async (event) => {
+  const user = event.context.auth;
+  if (!user) throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
+  const q = getQuery$1(event);
+  const search = q.search || "";
+  const status = q.status || "";
+  const unitIds = (q.unit_id || []).map(Number);
+  const floorIds = (q.floor_id || []).map(Number);
+  const roomIds = (q.room_id || []).map(Number);
+  const page = Number(q.page) || 1;
+  const perPage = Number(q.per_page) || 10;
+  const skip = (page - 1) * perPage;
+  const where = {};
+  if (status) where.status = status;
+  if (unitIds.length) where.unitId = { in: unitIds };
+  if (roomIds.length) where.roomId = { in: roomIds };
+  if (search) {
+    where.OR = [
+      { inventoryNumber: { contains: search, mode: "insensitive" } },
+      { item: { name: { contains: search, mode: "insensitive" } } }
+    ];
+  }
+  if (floorIds.length) where.room = { floorId: { in: floorIds } };
+  const total = await prisma$7.inventory.count({ where });
+  const items = await prisma$7.inventory.findMany({
+    where,
+    skip,
+    take: perPage,
+    include: {
+      item: { select: { id: true, name: true } },
+      room: { select: { id: true, name: true, floor: { select: { id: true, number: true } } } },
+      unit: { select: { id: true, name: true } }
+    },
+    orderBy: { id: "asc" }
+  });
+  const grandTotal = user.role === "admin" ? await prisma$7.inventory.aggregate({
+    where,
+    _sum: { purchasePrice: true, estimatedDepreciation: true }
+  }) : null;
+  return {
+    recordsTotal: await prisma$7.inventory.count(),
+    recordsFiltered: total,
+    data: items,
+    grand_total: grandTotal ? { purchase: grandTotal._sum.purchasePrice || 0, depreciation: grandTotal._sum.estimatedDepreciation || 0 } : null
+  };
 });
 
 const index_get$b = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2437,10 +2656,41 @@ const index_get$b = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePropert
   default: index_get$a
 }, Symbol.toStringTag, { value: 'Module' }));
 
+const prisma$6 = new PrismaClient();
 const index_post$a = defineEventHandler(async (event) => {
-  const { name } = await readBody(event);
-  const division = await prisma.divisions.create({ data: { name } });
-  return sterilBigInt(division);
+  const user = event.context.auth;
+  if (!user) throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
+  const body = await readBody(event);
+  const { inventoryItemId, procurement_date, acquisition_source, purchase_price, unit_id, room_id, status, description = "" } = body;
+  const master = await prisma$6.inventoryItem.findUnique({ where: { id: Number(inventoryItemId) } });
+  if (!master) throw createError({ statusCode: 404, statusMessage: "Master barang tidak ditemukan" });
+  const room = await prisma$6.room.findUnique({
+    where: { id: Number(room_id) },
+    include: { floor: { select: { code: true } } }
+  });
+  if (!room) throw createError({ statusCode: 404, statusMessage: "Ruangan tidak ditemukan" });
+  const today = /* @__PURE__ */ new Date();
+  const y = today.getFullYear();
+  const m = String(today.getMonth() + 1).padStart(2, "0");
+  const d = String(today.getDate()).padStart(2, "0");
+  const counter = await prisma$6.inventory.count();
+  const inventoryNumber = `${y}${m}${d}${room.floor.code}${counter + 1}`;
+  const created = await prisma$6.inventory.create({
+    data: {
+      inventoryNumber,
+      inventoryItemId: Number(inventoryItemId),
+      procurement_date: new Date(procurement_date),
+      acquisition_source,
+      purchase_price: Number(purchase_price),
+      unit_id: Number(unit_id),
+      room_id: Number(room_id),
+      status,
+      description
+    }
+  });
+  await prisma$6.inventoryItem.update({ where: { id: Number(inventoryItemId) }, data: { quantity: { increment: 1 } } });
+  setResponseStatus(event, 201);
+  return created;
 });
 
 const index_post$b = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2448,10 +2698,84 @@ const index_post$b = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProper
   default: index_post$a
 }, Symbol.toStringTag, { value: 'Module' }));
 
+const table_get = defineEventHandler(async (event) => {
+  var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
+  const user = event.context.auth;
+  if (!user) throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
+  const q = getQuery$1(event);
+  const search = ((_a = q.search) != null ? _a : "").trim();
+  const status = (_b = q.status) != null ? _b : "";
+  const unitIds = ((_c = q.unit_id) != null ? _c : []).map(Number).filter(Boolean);
+  const roomIds = ((_d = q.room_id) != null ? _d : []).map(Number).filter(Boolean);
+  const floorIds = ((_e = q.floor_id) != null ? _e : []).map(Number).filter(Boolean);
+  const page = Number((_f = q.page) != null ? _f : 1);
+  const perPage = Number((_g = q.per_page) != null ? _g : 10);
+  const skip = (page - 1) * perPage;
+  const canSeePrice = user.role === "admin" || ((_h = user.division) == null ? void 0 : _h.name) === "Keuangan" || user.role === "head" && ((_i = user.division) == null ? void 0 : _i.name) === "Umum";
+  const where = {};
+  if (status) where.status = status;
+  if (unitIds.length) where.unit_id = { in: unitIds };
+  if (roomIds.length) where.room_id = { in: roomIds };
+  if (search) {
+    where.OR = [
+      { inventory_number: { contains: search, mode: "insensitive" } },
+      { inventory_items: { name: { contains: search, mode: "insensitive" } } }
+    ];
+  }
+  if (floorIds.length) {
+    where.rooms = { floor_id: { in: floorIds } };
+  }
+  const recordsFiltered = await prisma$b.inventories.count({ where });
+  const recordsTotal = await prisma$b.inventories.count();
+  const grandTotalRaw = canSeePrice ? await prisma$b.inventories.aggregate({
+    where,
+    _sum: { purchase_price: true, estimated_depreciation: true }
+  }) : { _sum: { purchase_price: 0, estimated_depreciation: 0 } };
+  const grandTotal = {
+    purchase: Number((_j = grandTotalRaw._sum.purchase_price) != null ? _j : 0),
+    depreciation: Number((_k = grandTotalRaw._sum.estimated_depreciation) != null ? _k : 0)
+  };
+  const data = await prisma$b.inventories.findMany({
+    where,
+    skip,
+    take: perPage,
+    include: {
+      inventory_items: { select: { id: true, name: true } },
+      rooms: {
+        select: {
+          id: true,
+          name: true,
+          floors: { select: { id: true, number: true } }
+        }
+      },
+      location_units: { select: { id: true, name: true } }
+    },
+    orderBy: { id: "asc" }
+  });
+  return sterilBigInt({
+    recordsTotal,
+    recordsFiltered,
+    data,
+    grand_total: grandTotal
+  });
+});
+
+const table_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: table_get
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const prisma$5 = new PrismaClient();
 const _id__delete$8 = defineEventHandler(async (event) => {
-  const id = BigInt(getRouterParam(event, "id"));
-  await prisma.floors.delete({ where: { id } });
-  return { message: "Lantai berhasil dihapus" };
+  const user = event.context.auth;
+  if (!user || user.role !== "admin") throw createError({ statusCode: 403, statusMessage: "Admin only" });
+  const id = Number(getRouterParam(event, "id"));
+  if (!id) throw createError({ statusCode: 400, statusMessage: "ID required" });
+  const count = await prisma$5.inventory.count({ where: { inventoryItemId: id } });
+  if (count > 0) throw createError({ statusCode: 400, statusMessage: "Masih memiliki unit inventaris" });
+  await prisma$5.inventoryItem.delete({ where: { id } });
+  setResponseStatus(event, 204);
+  return null;
 });
 
 const _id__delete$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2459,14 +2783,45 @@ const _id__delete$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePrope
   default: _id__delete$8
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _id__put$8 = defineEventHandler(async (event) => {
-  const id = BigInt(getRouterParam(event, "id"));
-  const { number, unit_id } = await readBody(event);
-  const floor = await prisma.floors.update({
+const prisma$4 = new PrismaClient();
+const _id__get = defineEventHandler(async (event) => {
+  const user = event.context.auth;
+  if (!user) throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
+  const id = Number(getRouterParam(event, "id"));
+  if (!id) throw createError({ statusCode: 400, statusMessage: "ID required" });
+  const item = await prisma$4.inventoryItem.findUnique({
     where: { id },
-    data: { number, unit_id: BigInt(unit_id) }
+    include: { brand: true, category: true }
   });
-  return sterilBigInt(floor);
+  if (!item) throw createError({ statusCode: 404, statusMessage: "Barang tidak ditemukan" });
+  return item;
+});
+
+const _id__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__get
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const prisma$3 = new PrismaClient();
+const _id__put$8 = defineEventHandler(async (event) => {
+  const user = event.context.auth;
+  if (!user || !["admin", "head"].includes(user.role)) throw createError({ statusCode: 403, statusMessage: "Tidak punya akses" });
+  const id = Number(getRouterParam(event, "id"));
+  if (!id) throw createError({ statusCode: 400, statusMessage: "ID required" });
+  const body = await readBody(event);
+  const { name, brandId, categoryId, manufacture_year, isbn, quantity } = body;
+  const updated = await prisma$3.inventoryItem.update({
+    where: { id },
+    data: {
+      name,
+      brandId: Number(brandId),
+      categoryId: Number(categoryId),
+      manufacture_year,
+      isbn,
+      quantity: Number(quantity)
+    }
+  });
+  return updated;
 });
 
 const _id__put$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2474,12 +2829,66 @@ const _id__put$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty
   default: _id__put$8
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const index_get$8 = defineEventHandler(async () => {
-  const floors = await prisma.floors.findMany({
-    include: { location_units: { select: { id: true, name: true } } },
-    orderBy: { number: "asc" }
+const prisma$2 = new PrismaClient();
+const datatable_get = defineEventHandler(async (event) => {
+  var _a;
+  const user = event.context.auth;
+  if (!user || !["admin", "head"].includes(user.role)) throw createError({ statusCode: 403, statusMessage: "Tidak punya akses" });
+  const query = getQuery$1(event);
+  const search = (((_a = query.search) == null ? void 0 : _a.value) || "").trim();
+  const start = parseInt(query.start) || 0;
+  const length = parseInt(query.length) || 10;
+  const where = {};
+  if (search) {
+    where.OR = [
+      { name: { contains: search, mode: "insensitive" } },
+      { isbn: { contains: search, mode: "insensitive" } }
+    ];
+  }
+  const [recordsTotal, recordsFiltered, data] = await prisma$2.$transaction([
+    prisma$2.inventoryItem.count(),
+    prisma$2.inventoryItem.count({ where }),
+    prisma$2.inventoryItem.findMany({
+      where,
+      include: { brand: true, category: true },
+      skip: start,
+      take: length,
+      orderBy: { id: "asc" }
+    })
+  ]);
+  return {
+    draw: parseInt(query.draw) || 1,
+    recordsTotal,
+    recordsFiltered,
+    data
+  };
+});
+
+const datatable_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: datatable_get
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const prisma$1 = new PrismaClient();
+const index_get$8 = defineEventHandler(async (event) => {
+  const user = event.context.auth;
+  if (!user) throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
+  const { search = "", category_id, brand_id } = getQuery$1(event);
+  const where = {};
+  if (search) {
+    where.OR = [
+      { name: { contains: search, mode: "insensitive" } },
+      { isbn: { contains: search, mode: "insensitive" } }
+    ];
+  }
+  if (category_id) where.categoryId = Number(category_id);
+  if (brand_id) where.brandId = Number(brand_id);
+  const items = await prisma$1.inventoryItem.findMany({
+    where,
+    include: { brand: true, category: true },
+    orderBy: { id: "asc" }
   });
-  return sterilBigInt(floors);
+  return items;
 });
 
 const index_get$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2487,10 +2896,24 @@ const index_get$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePropert
   default: index_get$8
 }, Symbol.toStringTag, { value: 'Module' }));
 
+const prisma = new PrismaClient();
 const index_post$8 = defineEventHandler(async (event) => {
-  const { number, unit_id } = await readBody(event);
-  const floor = await prisma.floors.create({ data: { number, unit_id: BigInt(unit_id) } });
-  return sterilBigInt(floor);
+  const user = event.context.auth;
+  if (!user || !["admin", "head"].includes(user.role)) throw createError({ statusCode: 403, statusMessage: "Tidak punya akses" });
+  const body = await readBody(event);
+  const { name, brandId, categoryId, manufacture_year, isbn = "", quantity = 0 } = body;
+  const created = await prisma.inventoryItem.create({
+    data: {
+      name,
+      brandId: Number(brandId),
+      categoryId: Number(categoryId),
+      manufacture_year,
+      isbn,
+      quantity: Number(quantity)
+    }
+  });
+  setResponseStatus(event, 201);
+  return created;
 });
 
 const index_post$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2500,7 +2923,7 @@ const index_post$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProper
 
 const _id__delete$6 = defineEventHandler(async (event) => {
   const id = BigInt(getRouterParam(event, "id"));
-  await prisma.item_types.delete({ where: { id } });
+  await prisma$b.item_types.delete({ where: { id } });
   return { message: "Jenis barang berhasil dihapus" };
 });
 
@@ -2512,11 +2935,11 @@ const _id__delete$7 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePrope
 const _id__put$6 = defineEventHandler(async (event) => {
   const id = BigInt(getRouterParam(event, "id"));
   const { name } = await readBody(event);
-  const exists = await prisma.item_types.findFirst({
+  const exists = await prisma$b.item_types.findFirst({
     where: { name, NOT: { id } }
   });
   if (exists) throw createError({ statusCode: 409, statusMessage: "Nama jenis sudah ada" });
-  const updated = await prisma.item_types.update({ where: { id }, data: { name } });
+  const updated = await prisma$b.item_types.update({ where: { id }, data: { name } });
   return sterilBigInt(updated);
 });
 
@@ -2526,7 +2949,7 @@ const _id__put$7 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const index_get$6 = defineEventHandler(async () => {
-  const types = await prisma.item_types.findMany({ orderBy: { name: "asc" } });
+  const types = await prisma$b.item_types.findMany({ orderBy: { name: "asc" } });
   return sterilBigInt(types);
 });
 
@@ -2537,9 +2960,9 @@ const index_get$7 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePropert
 
 const index_post$6 = defineEventHandler(async (event) => {
   const { name } = await readBody(event);
-  const exists = await prisma.item_types.findFirst({ where: { name } });
+  const exists = await prisma$b.item_types.findFirst({ where: { name } });
   if (exists) throw createError({ statusCode: 409, statusMessage: "Nama jenis sudah ada" });
-  const created = await prisma.item_types.create({ data: { name } });
+  const created = await prisma$b.item_types.create({ data: { name } });
   return sterilBigInt(created);
 });
 
@@ -2550,7 +2973,7 @@ const index_post$7 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProper
 
 const _id__delete$4 = defineEventHandler(async (event) => {
   const id = BigInt(getRouterParam(event, "id"));
-  await prisma.rooms.delete({ where: { id } });
+  await prisma$b.rooms.delete({ where: { id } });
   return { message: "Ruangan berhasil dihapus" };
 });
 
@@ -2562,11 +2985,11 @@ const _id__delete$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePrope
 const _id__put$4 = defineEventHandler(async (event) => {
   const id = BigInt(getRouterParam(event, "id"));
   const { name, floor_id, pj_lokasi_id } = await readBody(event);
-  const duplicate = await prisma.rooms.findFirst({
+  const duplicate = await prisma$b.rooms.findFirst({
     where: { floor_id: BigInt(floor_id), name, NOT: { id } }
   });
   if (duplicate) throw createError({ statusCode: 409, statusMessage: "Nama ruangan sudah ada di lantai ini" });
-  const room = await prisma.rooms.update({
+  const room = await prisma$b.rooms.update({
     where: { id },
     data: {
       name,
@@ -2583,7 +3006,7 @@ const _id__put$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const index_get$4 = defineEventHandler(async () => {
-  const rooms = await prisma.rooms.findMany({
+  const rooms = await prisma$b.rooms.findMany({
     include: {
       floors: {
         include: {
@@ -2616,11 +3039,11 @@ const index_get$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePropert
 const index_post$4 = defineEventHandler(async (event) => {
   const id = BigInt(getRouterParam(event, "id"));
   const { name, floor_id, pj_lokasi_id } = await readBody(event);
-  const duplicate = await prisma.rooms.findFirst({
+  const duplicate = await prisma$b.rooms.findFirst({
     where: { floor_id: BigInt(floor_id), name, NOT: { id } }
   });
   if (duplicate) throw createError({ statusCode: 409, statusMessage: "Nama ruangan sudah ada di lantai ini" });
-  const room = await prisma.rooms.update({
+  const room = await prisma$b.rooms.update({
     where: { id },
     data: {
       name,
@@ -2638,7 +3061,7 @@ const index_post$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProper
 
 const _id__delete$2 = defineEventHandler(async (event) => {
   const id = BigInt(getRouterParam(event, "id"));
-  await prisma.location_units.delete({ where: { id } });
+  await prisma$b.location_units.delete({ where: { id } });
   return { message: "Unit berhasil dihapus" };
 });
 
@@ -2650,11 +3073,11 @@ const _id__delete$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePrope
 const _id__put$2 = defineEventHandler(async (event) => {
   const id = BigInt(getRouterParam(event, "id"));
   const { name } = await readBody(event);
-  const exists = await prisma.location_units.findFirst({
+  const exists = await prisma$b.location_units.findFirst({
     where: { name, NOT: { id } }
   });
   if (exists) throw createError({ statusCode: 409, statusMessage: "Nama unit sudah ada" });
-  const updated = await prisma.location_units.update({ where: { id }, data: { name } });
+  const updated = await prisma$b.location_units.update({ where: { id }, data: { name } });
   return sterilBigInt(updated);
 });
 
@@ -2664,7 +3087,7 @@ const _id__put$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const index_get$2 = defineEventHandler(async () => {
-  const units = await prisma.location_units.findMany({ orderBy: { name: "asc" } });
+  const units = await prisma$b.location_units.findMany({ orderBy: { name: "asc" } });
   return sterilBigInt(units);
 });
 
@@ -2675,9 +3098,9 @@ const index_get$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePropert
 
 const index_post$2 = defineEventHandler(async (event) => {
   const { name } = await readBody(event);
-  const exists = await prisma.location_units.findFirst({ where: { name } });
+  const exists = await prisma$b.location_units.findFirst({ where: { name } });
   if (exists) throw createError({ statusCode: 409, statusMessage: "Nama unit sudah ada" });
-  const created = await prisma.location_units.create({ data: { name } });
+  const created = await prisma$b.location_units.create({ data: { name } });
   return sterilBigInt(created);
 });
 
@@ -2688,7 +3111,7 @@ const index_post$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProper
 
 const _id__delete = defineEventHandler(async (event) => {
   const id = getRouterParam(event, "id");
-  await prisma.users.delete({ where: { id: BigInt(id) } });
+  await prisma$b.users.delete({ where: { id: BigInt(id) } });
   return { message: "User berhasil dihapus" };
 });
 
@@ -2707,7 +3130,7 @@ const _id__put = defineEventHandler(async (event) => {
   }
   delete body.password_confirmation;
   if (body.division_id) body.division_id = BigInt(body.division_id);
-  const updated = await prisma.users.update({
+  const updated = await prisma$b.users.update({
     where: { id: BigInt(id) },
     // <-- BigInt
     data: body
@@ -2721,7 +3144,7 @@ const _id__put$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const index_get = defineEventHandler(async () => {
-  const users = await prisma.users.findMany({
+  const users = await prisma$b.users.findMany({
     select: {
       id: true,
       name: true,
@@ -2759,7 +3182,7 @@ const index_post = defineEventHandler(async (event) => {
   body.password = await bcrypt.hash(body.password, 10);
   delete body.password_confirmation;
   if (body.division_id) body.division_id = BigInt(body.division_id);
-  const created = await prisma.users.create({ data: body });
+  const created = await prisma$b.users.create({ data: body });
   return sterilBigInt(created);
 });
 
@@ -2780,7 +3203,7 @@ const me_get = defineEventHandler(async (event) => {
   }
   const userId = Number(payload.id);
   if (!Number.isFinite(userId)) throw createError({ statusCode: 401 });
-  const user = await prisma.users.findUnique({
+  const user = await prisma$b.users.findUnique({
     where: { id: BigInt(userId) },
     select: {
       id: true,

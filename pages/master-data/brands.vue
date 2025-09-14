@@ -38,17 +38,21 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useBrands } from '~/composables/useBrands'
 import BrandForm from '~/components/BrandForm.vue'
 
-definePageMeta({
-  roles: ['admin', 'head'] // hak akses halaman
-})
+definePageMeta({ roles: ['admin', 'head'] })
 
 const { brands, fetchBrands, removeBrand } = useBrands()
 const showForm = ref(false)
 const selectedBrand = ref(null)
+
+// 1. TOP-LEVEL → jalan di server & client navigasi
+await fetchBrands()
+
+// 2. onMounted cuma untuk DOM (kalau ada)
+// onMounted(() => { /* init tooltip, etc */ })
 
 const openForm = (brand) => {
   selectedBrand.value = brand
@@ -56,8 +60,8 @@ const openForm = (brand) => {
 }
 
 const refreshBrands = async () => {
-  await fetchBrands()
   showForm.value = false
+  await fetchBrands()
 }
 
 const deleteBrand = async (id) => {
@@ -66,6 +70,4 @@ const deleteBrand = async (id) => {
     await fetchBrands()
   }
 }
-
-onMounted(fetchBrands)
 </script>

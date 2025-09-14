@@ -32,6 +32,7 @@ declare global {
   const createSharedComposable: typeof import('../../node_modules/@vueuse/core')['createSharedComposable']
   const createTemplatePromise: typeof import('../../node_modules/@vueuse/core')['createTemplatePromise']
   const createUnrefFn: typeof import('../../node_modules/@vueuse/core')['createUnrefFn']
+  const currency: typeof import('../../utils/format')['currency']
   const customRef: typeof import('vue')['customRef']
   const debouncedRef: typeof import('../../node_modules/@vueuse/core')['debouncedRef']
   const debouncedWatch: typeof import('../../node_modules/@vueuse/core')['debouncedWatch']
@@ -53,6 +54,7 @@ declare global {
   const effect: typeof import('vue')['effect']
   const effectScope: typeof import('vue')['effectScope']
   const extendRef: typeof import('../../node_modules/@vueuse/core')['extendRef']
+  const formatDate: typeof import('../../utils/format')['formatDate']
   const getAppManifest: typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getAppManifest']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
@@ -260,6 +262,7 @@ declare global {
   const useIntersectionObserver: typeof import('../../node_modules/@vueuse/core')['useIntersectionObserver']
   const useInterval: typeof import('../../node_modules/@vueuse/core')['useInterval']
   const useIntervalFn: typeof import('../../node_modules/@vueuse/core')['useIntervalFn']
+  const useInventories: typeof import('../../composables/useInventories')['useInventories']
   const useItemTypes: typeof import('../../composables/useItemTypes')['useItemTypes']
   const useKeyModifier: typeof import('../../node_modules/@vueuse/core')['useKeyModifier']
   const useLastChanged: typeof import('../../node_modules/@vueuse/core')['useLastChanged']
@@ -487,6 +490,7 @@ declare module 'vue' {
     readonly createSharedComposable: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['createSharedComposable']>
     readonly createTemplatePromise: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['createTemplatePromise']>
     readonly createUnrefFn: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['createUnrefFn']>
+    readonly currency: UnwrapRef<typeof import('../../utils/format')['currency']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly debouncedRef: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['debouncedWatch']>
@@ -508,6 +512,7 @@ declare module 'vue' {
     readonly effect: UnwrapRef<typeof import('vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extendRef: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['extendRef']>
+    readonly formatDate: UnwrapRef<typeof import('../../utils/format')['formatDate']>
     readonly getAppManifest: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getAppManifest']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
@@ -715,6 +720,7 @@ declare module 'vue' {
     readonly useIntersectionObserver: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useIntersectionObserver']>
     readonly useInterval: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useInterval']>
     readonly useIntervalFn: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useIntervalFn']>
+    readonly useInventories: UnwrapRef<typeof import('../../composables/useInventories')['useInventories']>
     readonly useItemTypes: UnwrapRef<typeof import('../../composables/useItemTypes')['useItemTypes']>
     readonly useKeyModifier: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useKeyModifier']>
     readonly useLastChanged: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useLastChanged']>

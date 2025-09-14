@@ -119,6 +119,7 @@
 </template>
 
 <script setup>
+import { useAuth } from '~/composables/useAuth'
 import { Bars3Icon, ChevronRightIcon } from '@heroicons/vue/24/outline'
 import LoadingLottie from '@/components/LoadingLottie.vue'
 

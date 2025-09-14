@@ -24,10 +24,13 @@
     "bcryptjs": "^3.0.2",
     "jose": "^6.1.0",
     "jsonwebtoken": "^9.0.2",
+    "lodash.debounce": "^4.0.8",
     "nuxt": "^3.13.3",
     "pinia": "^3.0.3",
     "vue": "^3.5.20",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "vue-select": "^4.0.0-beta.6",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@heroicons/vue": "^2.2.0",
